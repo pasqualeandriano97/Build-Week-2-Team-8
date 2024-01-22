@@ -13,9 +13,9 @@ const getAlbumIdFromUrl = function () {
   return albumId;
 };
 
-// Funzione per effettuare la chiamata API e ottenere i dati dell'album
+// Funzione per effettuare la chiamata API e ottenere i dati dell'album:
 const fetchAlbumData = function (albumId) {
-  // Utilizza l'endpoint dell'API per ottenere i dati dell'album
+  // endpoint dell'API per ottenere i dati dell'album:
   const apiUrl = `https://striveschool-api.herokuapp.com/api/deezer/album/${albumId}`;
 
   //  fetch all'API
