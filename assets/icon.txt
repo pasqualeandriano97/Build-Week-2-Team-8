@@ -1,0 +1,47 @@
+<i class="bi bi-heart"></i> icona cuore vuoto
+
+<i class="bi bi-play-circle-fill"></i>  player pieno
+
+<i class="bi bi-arrow-down-circle"></i>  download vuoto
+
+<i class="bi bi-three-dots"></i>   tre puntini
+
+<i class="bi bi-clock"></i>   orologio vuoto
+
+<i class="bi bi-search"></i>  lente vuota
+
+<i class="bi bi-person-plus"></i>  add user vuoto
+
+<i class="bi bi-x"></i>    x vuoto
+
+<i class="bi bi-house"></i> home vuoto
+
+<i class="bi bi-bookmark-fill"></i>  segnalibro pieno
+
+<i class="bi bi-plus-square-fill"></i>  plus pieno
+
+<i class="bi bi-music-note-list"></i>  library 
+
+<i class="bi bi-shuffle"></i>  due trecce casuale
+
+<i class="bi bi-repeat"></i> repeat vuoto
+
+<i class="bi bi-repeat-1"></i>  repeat 1
+
+<i class="bi bi-pause-fill"></i>  pausa vuoto
+
+<i class="bi bi-skip-end-fill"></i> skip destra pieno
+
+<i class="bi bi-skip-start-fill"></i> skip sinistra pieno
+
+<i class="bi bi-volume-up-fill"></i> volume pieno
+
+<i class="bi bi-mic"></i>  microfono vuoto
+
+<i class="bi bi-arrows-angle-expand"></i> expand freccie
+
+<i class="bi bi-arrows-angle-contract"></i> rimpicciolisci freccie
+
+<i class="bi bi-speaker"></i> speaker vuoto
+
+<i class="bi bi-list"></i> hamburger 
