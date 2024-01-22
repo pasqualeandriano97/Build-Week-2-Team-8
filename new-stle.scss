@@ -6,6 +6,8 @@ $new-theme-colors: (
   'col-back': rgb(44, 44, 44),
   'artis-ver': rgb(61, 145, 244),
   'player-background': rgb(34, 204, 98),
+  'green-dark': rgb(0, 69, 55),
+
 );
 
 $theme-colors: map-merge($theme-colors, $new-theme-colors);

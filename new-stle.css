@@ -41,6 +41,7 @@
   --bs-col-back: rgb(44, 44, 44);
   --bs-artis-ver: rgb(61, 145, 244);
   --bs-player-background: rgb(34, 204, 98);
+  --bs-green-dark: rgb(0, 69, 55);
   --bs-primary-rgb: 13, 110, 253;
   --bs-secondary-rgb: 108, 117, 125;
   --bs-success-rgb: 25, 135, 84;
@@ -53,6 +54,7 @@
   --bs-col-back-rgb: 44, 44, 44;
   --bs-artis-ver-rgb: 61, 145, 244;
   --bs-player-background-rgb: 34, 204, 98;
+  --bs-green-dark-rgb: 0, 69, 55;
   --bs-primary-text-emphasis: #052c65;
   --bs-secondary-text-emphasis: #2b2f32;
   --bs-success-text-emphasis: #0a3622;
@@ -3218,6 +3220,23 @@ textarea.form-control-lg {
   --bs-btn-disabled-border-color: rgb(34, 204, 98);
 }
 
+.btn-green-dark {
+  --bs-btn-color: #fff;
+  --bs-btn-bg: rgb(0, 69, 55);
+  --bs-btn-border-color: rgb(0, 69, 55);
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: #003b2f;
+  --bs-btn-hover-border-color: #00372c;
+  --bs-btn-focus-shadow-rgb: 38, 97, 85;
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: #00372c;
+  --bs-btn-active-border-color: #003429;
+  --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  --bs-btn-disabled-color: #fff;
+  --bs-btn-disabled-bg: rgb(0, 69, 55);
+  --bs-btn-disabled-border-color: rgb(0, 69, 55);
+}
+
 .btn-outline-primary {
   --bs-btn-color: #0d6efd;
   --bs-btn-border-color: #0d6efd;
@@ -3419,6 +3438,23 @@ textarea.form-control-lg {
   --bs-btn-disabled-color: rgb(34, 204, 98);
   --bs-btn-disabled-bg: transparent;
   --bs-btn-disabled-border-color: rgb(34, 204, 98);
+  --bs-gradient: none;
+}
+
+.btn-outline-green-dark {
+  --bs-btn-color: rgb(0, 69, 55);
+  --bs-btn-border-color: rgb(0, 69, 55);
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: rgb(0, 69, 55);
+  --bs-btn-hover-border-color: rgb(0, 69, 55);
+  --bs-btn-focus-shadow-rgb: 0, 69, 55;
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: rgb(0, 69, 55);
+  --bs-btn-active-border-color: rgb(0, 69, 55);
+  --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  --bs-btn-disabled-color: rgb(0, 69, 55);
+  --bs-btn-disabled-bg: transparent;
+  --bs-btn-disabled-border-color: rgb(0, 69, 55);
   --bs-gradient: none;
 }
 
@@ -5077,6 +5113,13 @@ textarea.form-control-lg {
   --bs-alert-link-color: var(--bs-player-background-text-emphasis);
 }
 
+.alert-green-dark {
+  --bs-alert-color: var(--bs-green-dark-text-emphasis);
+  --bs-alert-bg: var(--bs-green-dark-bg-subtle);
+  --bs-alert-border-color: var(--bs-green-dark-border-subtle);
+  --bs-alert-link-color: var(--bs-green-dark-text-emphasis);
+}
+
 @keyframes progress-bar-stripes {
   0% {
     background-position-x: 1rem;
@@ -5532,6 +5575,19 @@ textarea.form-control-lg {
   --bs-list-group-active-color: var(--bs-player-background-bg-subtle);
   --bs-list-group-active-bg: var(--bs-player-background-text-emphasis);
   --bs-list-group-active-border-color: var(--bs-player-background-text-emphasis);
+}
+
+.list-group-item-green-dark {
+  --bs-list-group-color: var(--bs-green-dark-text-emphasis);
+  --bs-list-group-bg: var(--bs-green-dark-bg-subtle);
+  --bs-list-group-border-color: var(--bs-green-dark-border-subtle);
+  --bs-list-group-action-hover-color: var(--bs-emphasis-color);
+  --bs-list-group-action-hover-bg: var(--bs-green-dark-border-subtle);
+  --bs-list-group-action-active-color: var(--bs-emphasis-color);
+  --bs-list-group-action-active-bg: var(--bs-green-dark-border-subtle);
+  --bs-list-group-active-color: var(--bs-green-dark-bg-subtle);
+  --bs-list-group-active-bg: var(--bs-green-dark-text-emphasis);
+  --bs-list-group-active-border-color: var(--bs-green-dark-text-emphasis);
 }
 
 .btn-close {
@@ -7090,6 +7146,11 @@ textarea.form-control-lg {
   background-color: RGBA(var(--bs-player-background-rgb), var(--bs-bg-opacity, 1)) !important;
 }
 
+.text-bg-green-dark {
+  color: #fff !important;
+  background-color: RGBA(var(--bs-green-dark-rgb), var(--bs-bg-opacity, 1)) !important;
+}
+
 .link-primary {
   color: RGBA(var(--bs-primary-rgb), var(--bs-link-opacity, 1)) !important;
   text-decoration-color: RGBA(var(--bs-primary-rgb), var(--bs-link-underline-opacity, 1)) !important;
@@ -7196,6 +7257,15 @@ textarea.form-control-lg {
 .link-player-background:hover, .link-player-background:focus {
   color: RGBA(78, 214, 129, var(--bs-link-opacity, 1)) !important;
   text-decoration-color: RGBA(78, 214, 129, var(--bs-link-underline-opacity, 1)) !important;
+}
+
+.link-green-dark {
+  color: RGBA(var(--bs-green-dark-rgb), var(--bs-link-opacity, 1)) !important;
+  text-decoration-color: RGBA(var(--bs-green-dark-rgb), var(--bs-link-underline-opacity, 1)) !important;
+}
+.link-green-dark:hover, .link-green-dark:focus {
+  color: RGBA(0, 55, 44, var(--bs-link-opacity, 1)) !important;
+  text-decoration-color: RGBA(0, 55, 44, var(--bs-link-underline-opacity, 1)) !important;
 }
 
 .link-body-emphasis {
@@ -7650,6 +7720,10 @@ textarea.form-control-lg {
   --bs-focus-ring-color: rgba(var(--bs-player-background-rgb), var(--bs-focus-ring-opacity));
 }
 
+.focus-ring-green-dark {
+  --bs-focus-ring-color: rgba(var(--bs-green-dark-rgb), var(--bs-focus-ring-opacity));
+}
+
 .position-static {
   position: static !important;
 }
@@ -7844,6 +7918,11 @@ textarea.form-control-lg {
 .border-player-background {
   --bs-border-opacity: 1;
   border-color: rgba(var(--bs-player-background-rgb), var(--bs-border-opacity)) !important;
+}
+
+.border-green-dark {
+  --bs-border-opacity: 1;
+  border-color: rgba(var(--bs-green-dark-rgb), var(--bs-border-opacity)) !important;
 }
 
 .border-black {
@@ -8823,6 +8902,11 @@ textarea.form-control-lg {
   color: rgba(var(--bs-player-background-rgb), var(--bs-text-opacity)) !important;
 }
 
+.text-green-dark {
+  --bs-text-opacity: 1;
+  color: rgba(var(--bs-green-dark-rgb), var(--bs-text-opacity)) !important;
+}
+
 .text-black {
   --bs-text-opacity: 1;
   color: rgba(var(--bs-black-rgb), var(--bs-text-opacity)) !important;
@@ -9045,6 +9129,11 @@ textarea.form-control-lg {
   text-decoration-color: rgba(var(--bs-player-background-rgb), var(--bs-link-underline-opacity)) !important;
 }
 
+.link-underline-green-dark {
+  --bs-link-underline-opacity: 1;
+  text-decoration-color: rgba(var(--bs-green-dark-rgb), var(--bs-link-underline-opacity)) !important;
+}
+
 .link-underline {
   --bs-link-underline-opacity: 1;
   text-decoration-color: rgba(var(--bs-link-color-rgb), var(--bs-link-underline-opacity, 1)) !important;
@@ -9156,6 +9245,11 @@ textarea.form-control-lg {
 .bg-player-background {
   --bs-bg-opacity: 1;
   background-color: rgba(var(--bs-player-background-rgb), var(--bs-bg-opacity)) !important;
+}
+
+.bg-green-dark {
+  --bs-bg-opacity: 1;
+  background-color: rgba(var(--bs-green-dark-rgb), var(--bs-bg-opacity)) !important;
 }
 
 .bg-black {
