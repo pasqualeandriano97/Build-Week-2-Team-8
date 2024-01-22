@@ -1,6 +1,16 @@
 // Funzione per ottenere l'id dell'album dalla URL
 const getAlbumIdFromUrl = function () {
-  // Implementazione della tua logica per ottenere l'id dell'album
+  const currentUrl = window.location.href;
+
+  const url = new URL(currentUrl);
+
+  // parametri di query dall'URL
+  const searchParams = url.searchParams;
+
+  // ID dall'album dalla query string
+  const albumId = searchParams.get("albumId"); // ID dell'album come parametro "albumId"
+
+  return albumId;
 };
 
 // Funzione per effettuare la chiamata API e ottenere i dati dell'album
@@ -20,7 +30,7 @@ const fetchAlbumData = function (albumId) {
     })
     .catch((error) => {
       console.error("Errore nella chiamata API:", error);
-      throw error; // Rilancia l'errore per gestirlo nella catena di promesse
+      throw error;
     });
 };
 
