@@ -17,3 +17,15 @@
   );
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#4025a7",endColorstr="#ffffff",GradientType=1);
 }
+
+.ciao {
+  font-size: 0.75rem !important;
+}
+
+.carte {
+  background-color: #2c2c2c !important;
+}
+
+.carte2 {
+  background-color: #181818 !important;
+}
