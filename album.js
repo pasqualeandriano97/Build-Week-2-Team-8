@@ -1,108 +1,124 @@
+// GET
 // Funzione per ottenere l'id dell'album dalla URL
 const getAlbumIdFromUrl = function () {
   const currentUrl = window.location.href;
-
   const url = new URL(currentUrl);
-
-  // parametri di query dall'URL
-  const searchParams = url.searchParams;
-
-  // ID dall'album dalla query string
-  const albumId = searchParams.get("albumId"); // ID dell'album come parametro "albumId"
-
+  const searchParams = url.searchParams; // paramatres di query dall'URL
+  const albumId = searchParams.get("albumId");
   return albumId;
 };
 
-// Funzione per effettuare la chiamata API e ottenere i dati dell'album:
+//FETCH:
+// Funzione per effettuare la chiamata API e ottenere i dati dell'album
 const fetchAlbumData = function (albumId) {
   // endpoint dell'API per ottenere i dati dell'album:
-  const apiUrl = `https://striveschool-api.herokuapp.com/api/deezer/album/${albumId}`;
-
-  //  fetch all'API
-  return fetch(apiUrl)
+  const apiUrl = `https://striveschool-api.herokuapp.com/api/deezer/album/75621062`; // ${albumId}
+  return fetch(apiUrl) // fetch all'API
     .then((response) => {
       if (!response.ok) {
         throw new Error(`Errore nella richiesta: ${response.status}`);
       }
-
-      // Parse della risposta JSON
       return response.json();
     })
+    .then((dataAlbum) => {
+      console.log(dataAlbum);
+      updatePageWithAlbumData(dataAlbum);
+      // fetchAlbumTracks(albumId); // ERROR:Chiamata per ottenere le tracce
+    })
+
     .catch((error) => {
       console.error("Errore nella chiamata API:", error);
       throw error;
     });
 };
 
+// Funzione per ottenere tracce album:
+// "https://api.deezer.com/album/75621062/tracks" ciclo  tracks
+const fetchAlbumTracks = function (albumId) {
+  const apiUrl = `https://striveschool-api.herokuapp.com/api/deezer/album/${albumId}/tracks`;
+  return fetch(apiUrl)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`Errore nella richiesta: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then((trackData) => {
+      updateSongList(trackData.data); // Aggiorna la lista delle canzoni
+      console.log(trackData);
+    })
+    .catch((error) => {
+      console.error("Errore nella chiamata API delle tracce:", error);
+      throw error;
+    });
+};
+
+//
 // Funzione per aggiornare la pagina con i dati dell'album ottenuti dall'API
 const updatePageWithAlbumData = function (albumData) {
-  // H1 con il titolo dell'album
+  // itera albumData(oggetto)
+  console.log(albumData);
+  // h1
   const albumTitle = document.getElementById("album-title");
   albumTitle.innerText = albumData.title;
 
-  // p con la descrizione dell'album
+  // p
   const albumDescription = document.getElementById("album-description");
   albumDescription.innerText = albumData.description;
 
-  //  l'img dell'album
+  // immagine album:
   const albumImage = document.getElementById("album-image");
   albumImage.src = albumData.cover;
   albumImage.alt = albumData.title;
 
-  // lista delle canzoni
+  // lista canzoni:
   const songList = document.getElementById("song-list");
   albumData.songs.forEach(function (song, index) {
-    // Crea un elemento div per ogni canzone
     const songDiv = document.createElement("div");
     songDiv.classList.add("row", "align-items-center", "mt-2", "fw-bold");
 
-    //  numero di traccia
+    // numero di traccia:
     const trackNumber = document.createElement("div");
     trackNumber.classList.add("col");
     trackNumber.innerText = index + 1;
     songDiv.appendChild(trackNumber);
 
-    //  titolo della canzone
+    // titolo canzone:
     const songTitle = document.createElement("div");
     songTitle.classList.add("col");
     songTitle.innerText = song.title;
     songDiv.appendChild(songTitle);
 
-    /*// Aggiungi l'icona Play
+    // icon play:
     const playIcon = document.createElement("div");
-    playIcon.classList.add("col", "text-center");
+    playIcon.classList.add("col", "text-center", "play-icon");
     playIcon.innerHTML = '<i class="bi bi-play-circle-fill"></i>';
-    songDiv.appendChild(playIcon);*/
+    songDiv.appendChild(playIcon);
 
-    // durata della canzone
+    playIcon.addEventListener("click", function () {
+      console.log("Riproduzione della canzone:", song.title);
+    });
+
+    // RIPRODUZIONI:
+    const songReproductions = document.createElement("div");
+    songReproductions.classList.add("col", "text-center");
+    songReproductions.innerText = song.reproductions;
+    songDiv.appendChild(songReproductions);
+
+    // DURATA:
     const songDuration = document.createElement("div");
     songDuration.classList.add("col", "text-end");
     songDuration.innerHTML = `<i class="bi bi-clock"></i> ${song.duration}`;
     songDiv.appendChild(songDuration);
 
-    //  div della canzone alla lista
     songList.appendChild(songDiv);
   });
 };
 
-// id dell'album dalla URL
+// ID album dalla URL che prendo dalla window:
 const albumId = getAlbumIdFromUrl();
-
-//  API
 fetchAlbumData(albumId)
   .then(updatePageWithAlbumData)
   .catch(function (error) {
     console.error("Errore nel recupero dei dati dell'album:", error);
   });
-
-///////////////////////////
-// icon play
-const playIcon = document.createElement("div");
-playIcon.classList.add("col", "text-center", "play-icon");
-playIcon.innerHTML = '<i class="bi bi-play-circle-fill"></i>';
-songDiv.appendChild(playIcon);
-
-playIcon.addEventListener("click", function () {
-  //////////////
-  console.log("Riproduzione della canzone:", song.title);
-});

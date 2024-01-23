@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Bootstrap demo</title>
+    <title>Album page</title>
     <link rel="stylesheet" href="./new-stle.css" />
     <link
       rel="stylesheet"
@@ -17,6 +17,12 @@
         background-color: #121212;
         color: #fff;
       }
+
+      main {
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+
       .album-details {
         text-align: center;
       }
@@ -27,6 +33,7 @@
         margin-bottom: 20px;
       }
       #album-image {
+        margin-left: 30px;
         max-width: 100%;
         height: auto;
         border-radius: 8px;
@@ -86,8 +93,95 @@
         cursor: pointer;
       }
 
+      .icon-spacing {
+        margin-right: 0px; /* Regola questo valore a seconda dello spazio desiderato tra le icone */
+      }
+
+      .icon-group span {
+        margin-right: 0; /* Nessun margine tra le icone */
+      }
+
+      .icon-group {
+        display: flex; /* Questo assicura che le icone siano allineate in fila */
+      }
+
       .bi-clock {
         font-size: 1rem;
+      }
+
+      .col-2 {
+        text-align: left;
+        padding: 0 20px;
+      }
+
+      #album-image {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+      .album-details {
+        display: flex;
+        align-items: start;
+        /*margin-bottom: 20px;*/
+      }
+
+      .album-details .row {
+        align-items: center;
+      }
+
+      .album-info {
+        margin-left: 0;
+      }
+
+      .album-info h5,
+      .album-info h1,
+      .album-info p {
+        margin-left: -100px;
+      }
+
+      #album-title {
+        margin-bottom: 10px;
+      }
+
+      .row.mx-0 {
+        margin-right: 0;
+        margin-left: 0;
+      }
+
+      .col-7.px-0 {
+        padding-right: 0;
+        padding-left: 0;
+      }
+
+      .col-md-8 {
+        padding-left: 0;
+      }
+
+      .container-fluid {
+        padding: 0;
+        margin: 0;
+      }
+
+      .row {
+        margin-right: 0 !important;
+        margin-left: 0 !important;
+      }
+
+      .row > [class^="col-"],
+      .row > [class*=" col-"] {
+        padding-right: 0;
+        padding-left: 0;
+      }
+
+      .main-background {
+        min-height: 100vh;
+        background: rgb(0, 0, 0);
+        background: linear-gradient(
+          0deg,
+          rgba(0, 0, 0, 0.5) 0%,
+          rgba(163, 163, 163, 0.5) 100%
+        );
       }
     </style>
   </head>
@@ -161,60 +255,79 @@
               <i class="bi bi-chevron-right"></i>
             </div>
           </div>
-
           <!---->
-          <!---->
+          <!--questo era il main-->
           <main class="container">
             <div id="album-content" class="mt-5">
-              <div class="album-details">
-                <h1 id="album-title">Caricamento...</h1>
-                <p id="album-description">Attendere prego...</p>
-                <img
-                  id="album-image"
-                  class="img-fluid"
-                  alt="Immagine Album"
-                  src="placeholder.jpg"
-                />
-                <div id="song-list"></div>
+              <div class="row">
+                <!-- album-details -->
+                <div class="col-md-4">
+                  <img
+                    id="album-image"
+                    class="img-fluid"
+                    alt="Immagine Album"
+                    src="placeholder.jpg"
+                  />
+                </div>
+                <div class="col-md-8 d-flex align-items-center">
+                  <div class="album-info">
+                    <h5>ALBUM</h5>
+                    <h1 id="album-title">Caricamento...</h1>
+                    <p id="album-description">
+                      <img
+                        src="percorso_dell_immagine.jpg"
+                        alt="Descrizione dell'immagine"
+                      />Attendere prego...
+                    </p>
+                  </div>
+                </div>
               </div>
-              <div class="mt-4">
-                <div
-                  class="d-flex justify-content-between align-items-center mb-2"
-                >
-                  <div
-                    class="d-flex justify-content-between align-items-center mb-2"
-                  >
-                    <span class="rounded text-center ms-2">
-                      <i class="bi bi-play-circle-fill text-success fs-1"></i>
-                    </span>
-                    <span class="rounded text-center ms-2">
-                      <i class="bi bi-heart text-light fs-2"></i>
-                    </span>
-                    <span class="rounded text-center ms-2">
-                      <i class="bi bi-arrow-down-circle text-light fs-2"></i>
-                    </span>
-                    <span class="rounded text-center ms-2">
-                      <i class="bi bi-three-dots text-light fs-2"></i>
-                    </span>
+              <div class="row">
+                <div id="song-list" class="col"></div>
+              </div>
+              <div class="main-background">
+                <div class="mt-4 sfumatura">
+                  <div class="row mx-0">
+                    <div
+                      class="col d-flex justify-content-start align-items-center mb-2"
+                    >
+                      <span class="rounded text-center me-3">
+                        <i class="bi bi-play-circle-fill text-success fs-1"></i>
+                      </span>
+                      <div class="icon-group">
+                        <span class="rounded text-center icon-spacing">
+                          <i class="bi bi-heart text-light fs-2"></i>
+                        </span>
+                        <span class="rounded text-center icon-spacing">
+                          <i
+                            class="bi bi-arrow-down-circle text-light fs-2"
+                          ></i>
+                        </span>
+                        <span class="rounded text-center">
+                          <i class="bi bi-three-dots text-light fs-2"></i>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row fw-bold align-items-center song-list">
+                    <div class="col"># TITOLO</div>
+                    <div class="col text-center">RIPRODUZIONI</div>
+                    <div class="col text-end">
+                      <i class="bi bi-clock"></i>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div id="song-list" class="col mt-3"></div>
                   </div>
                 </div>
-                <div
-                  class="row fw-bold align-items-center song-list-header border-bottom"
-                  style="border-color: #706d60"
-                >
-                  <div class="col"># TITOLO</div>
-                  <div class="col text-center">RIPRODUZIONI</div>
-                  <div class="col text-end">
-                    <i class="bi bi-clock"></i>
-                  </div>
-                </div>
-                <div id="song-list" class="mt-3"></div>
               </div>
             </div>
           </main>
-
-          <!---->
         </div>
+
+        <!---->
+
+        <!---->
         <div class="col-2 px-0 bg-dark">
           <!-- Navbar laterale:sx -->
           <nav class="col-md-2 d-none d-md-block bg-dark sidebar w-100">
@@ -295,8 +408,6 @@
         </div>
       </div>
     </div>
-
-    <footer></footer>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
