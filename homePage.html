@@ -80,10 +80,10 @@
         <div class="col-7 px-0">
           <!-- Card centrale -->
           <div class="d-flex justify-content-start align-items-center mt-3">
-            <div class="bg-dark text-white rounded-circle px-1 mx-3">
+            <div class="bg-secondary text-white rounded-circle px-1 mx-3">
               <i class="bi bi-chevron-left"></i>
             </div>
-            <div class="bg-dark text-white rounded-circle px-1">
+            <div class="bg-secondary text-white rounded-circle px-1">
               <i class="bi bi-chevron-right"></i>
             </div>
             <div class="ms-3 d-none" id="searchBarDiv">
@@ -100,35 +100,39 @@
             <div class="row g-0 pb-3 p-2 bg-dark">
               <div class="col-md-4 mt-3">
                 <img
-                  src="./assets/imgs/search/image-4.jpg"
+                  id="image1"
+                  src="https://e-cdns-images.dzcdn.net/images/cover/de48d988a82fc401f4b9bafc2639f7d0/500x500-000000-80-0-0.jpg"
                   class="img-fluid rounded-start"
                   alt="..."
                 />
               </div>
               <div class="col-md-8 bg-dark">
-                <div class="card-body">
+                <div class="card-body h-100 position-relative">
                   <p>Album</p>
-                  <h3 class="card-title">Titolo</h3>
+                  <h3 class="card-title" id="title1">Highway to Hell</h3>
+                  <p class="card-text" id="artist1">AC/DC</p>
+
                   <p class="card-text">
-                    This is a wider card with supporting text below as a natural
-                    lead-in to additional content. This content is a little bit
-                    longer.
+                    Ascolta il nuovo singolo di <span id="artist2">AC/DC</span>
                   </p>
-                  <button
-                    type="button"
-                    class="btn btn-success rounded-5 text-dark"
-                  >
-                    Play
-                  </button>
-                  <button type="button" class="btn btn-outline-light rounded-5">
-                    Salva
-                  </button>
-                  <i class="bi bi-three-dots"></i>
-                  <p class="card-text">
-                    <small class="text-body-secondary"
-                      >Last updated 3 mins ago</small
+                  <div class="position-absolute bottom-0 start-5">
+                    <button
+                      type="button"
+                      class="btn btn-success rounded-5 text-dark"
                     >
-                  </p>
+                      Play
+                    </button>
+                    <button
+                      type="button"
+                      class="btn btn-outline-light rounded-5 mx-2"
+                    >
+                      Salva
+                    </button>
+                    <i class="bi bi-three-dots mx-1"></i>
+                    <p class="card-text text-white d-inline">
+                      <span class="text-white">Last updated 3 mins ago</span>
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -136,11 +140,13 @@
           <!-- Fine Card centrale -->
 
           <!-- Mini Cards (3 per riga) -->
-          <div class="row mt-4 mw-100">
-            <h4 class="text-light">Bunasera</h4>
 
+          <h4 class="text-light">Buonasera</h4>
+
+          <div class="row mt-4 mw-100 g-2" id="row1">
             <!-- Card 1 -->
-            <div class="col-4">
+
+            <div class="col-4 nascosto">
               <div class="card bg-dark text-white carte">
                 <div class="card-body d-flex p-0">
                   <img
@@ -148,16 +154,17 @@
                     class="img-fluid rounded-end col-md-4"
                     alt="Immagine Mini Card 1"
                   />
-                  <div class="d-flex flex-column col-md-8 ms-2 py-2">
-                    <h5 class="card-title">Mini Card 1</h5>
-                    <p class="card-text">Contenuto della mini card 1.</p>
+                  <div
+                    class="d-flex flex-column col-md-8 ms-2 py-2 justify-content-center"
+                  >
+                    <p class="card-text">Be The Young</p>
                   </div>
                 </div>
               </div>
             </div>
 
             <!-- Card 2 -->
-            <div class="col-4">
+            <div class="col-4 nascosto">
               <div class="card bg-dark text-white carte">
                 <div class="card-body d-flex p-0">
                   <img
@@ -165,16 +172,18 @@
                     class="img-fluid rounded-end col-md-4"
                     alt="Immagine Mini Card 2"
                   />
-                  <div class="d-flex flex-column col-md-8 ms-2 py-2">
-                    <h5 class="card-title">Mini Card 2</h5>
-                    <p class="card-text">Contenuto della mini card 2.</p>
+                  <div
+                    class="d-flex flex-column col-md-8 ms-2 py-2 justify-content-center"
+                  >
+                    <!-- <h5 class="card-title">Mini Card 2</h5> -->
+                    <p class="card-text">Be The Young</p>
                   </div>
                 </div>
               </div>
             </div>
 
             <!-- Card 3 -->
-            <div class="col-4">
+            <div class="col-4 nascosto">
               <div class="card bg-dark text-white carte">
                 <div class="card-body d-flex p-0">
                   <img
@@ -182,19 +191,20 @@
                     class="img-fluid rounded-end col-md-4"
                     alt="Immagine Mini Card 3"
                   />
-                  <div class="d-flex flex-column col-md-8 ms-2 py-2">
-                    <h5 class="card-title">Mini Card 3</h5>
-                    <p class="card-text">Contenuto della mini card 3.</p>
+                  <div
+                    class="d-flex flex-column col-md-8 ms-2 py-2 justify-content-center"
+                  >
+                    <!-- <h5 class="card-title">Mini Card 3</h5> -->
+                    <p class="card-text">Saggio vibes</p>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
 
-          <!-- Second Row -->
-          <div class="row mt-4 mw-100">
+            <!-- Second Row -->
+
             <!-- Card 4 -->
-            <div class="col-4">
+            <div class="col-4 nascosto">
               <div class="card bg-dark text-white carte">
                 <div class="card-body d-flex p-0">
                   <img
@@ -202,16 +212,18 @@
                     class="img-fluid rounded-end col-md-4"
                     alt="Immagine Mini Card 4"
                   />
-                  <div class="d-flex flex-column col-md-8 ms-2 py-2">
-                    <h5 class="card-title">Mini Card 4</h5>
-                    <p class="card-text">Contenuto della mini card 4.</p>
+                  <div
+                    class="d-flex flex-column col-md-8 ms-2 py-2 justify-content-center"
+                  >
+                    <!-- <h5 class="card-title">Mini Card 4</h5> -->
+                    <p class="card-text">Brani che ti piacciono.</p>
                   </div>
                 </div>
               </div>
             </div>
 
             <!-- Card 5 -->
-            <div class="col-4">
+            <div class="col-4 nascosto">
               <div class="card bg-dark text-white carte">
                 <div class="card-body d-flex p-0">
                   <img
@@ -219,16 +231,18 @@
                     class="img-fluid rounded-end col-md-4"
                     alt="Immagine Mini Card 5"
                   />
-                  <div class="d-flex flex-column col-md-8 ms-2 py-2">
-                    <h5 class="card-title">Mini Card 5</h5>
-                    <p class="card-text">Contenuto della mini card 5.</p>
+                  <div
+                    class="d-flex flex-column col-md-8 ms-2 py-2 justify-content-center"
+                  >
+                    <!-- <h5 class="card-title">Mini Card 5</h5> -->
+                    <p class="card-text">2021 lol</p>
                   </div>
                 </div>
               </div>
             </div>
 
             <!-- Card 6 -->
-            <div class="col-4">
+            <div class="col-4 nascosto">
               <div class="card bg-dark text-white carte">
                 <div class="card-body d-flex p-0">
                   <img
@@ -236,18 +250,18 @@
                     class="img-fluid rounded-end col-md-4"
                     alt="Immagine Mini Card 6"
                   />
-                  <div class="d-flex flex-column col-md-8 ms-2 py-2">
-                    <h5 class="card-title">Mini Card 6</h5>
-                    <p class="card-text">Contenuto della mini card 6.</p>
+                  <div
+                    class="d-flex flex-column col-md-8 ms-2 py-2 justify-content-center"
+                  >
+                    <!-- <h5 class="card-title">Mini Card 6</h5> -->
+                    <p class="card-text">Deep Dive with Ai Ab&al</p>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-
-          <h5 class="text-light my-3">Altro di ciò che ti piace</h5>
-
-          <div class="row mw-100">
+          <h5 class="text-light my-3 mw-100 mt-5">Altro di ciò che ti piace</h5>
+          <div class="row">
             <div class="col-3">
               <div class="card custom-card bg-dark text-light carte2">
                 <img
@@ -309,7 +323,7 @@
         <div class="col-2 bg-dark">
           <!-- Navbar laterale:dx -->
 
-          <nav class="col-md-2 d-none d-md-block bg-dark sidebar w-100">
+          <nav class="d-none d-md-block bg-dark sidebar w-100">
             <div class="p-2 d-flex justify-content-between align-items-center">
               <div class="">
                 <h5 class="text-light">Attività amici</h5>
@@ -393,7 +407,6 @@
         </div>
       </div>
     </div>
-
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
