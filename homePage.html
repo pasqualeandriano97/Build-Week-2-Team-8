@@ -12,8 +12,7 @@
     <link rel="stylesheet" href="./style.css" />
     <link rel="stylesheet" href="./assets/css/circular-font.css" />
   </head>
-  <body>
-    <header></header>
+  <body class="bg-dark">
     <div class="container-fluid mx-0">
       <div class="row vh-100">
         <div class="col-3 px-0 bg-dark">
@@ -78,28 +77,221 @@
           </nav>
           <hr class="text-light" />
         </div>
-        <div class="col-7 mt-3">
-          <div class="d-flex justify-content-start align-items-center">
-            <div class="bg-dark text-white rounded-circle px-1 mx-3">
-              <i class="bi bi-chevron-left"></i>
+        <div class="col-7 px-0">
+          <!-- Card centrale -->
+          <div class="card mb-3 mt-3 d-inline bg-dark text-white">
+            <div class="row g-0 pb-3 p-2 bg-dark">
+              <div class="col-md-4 mt-3">
+                <img
+                  src="./assets/imgs/search/image-4.jpg"
+                  class="img-fluid rounded-start"
+                  alt="..."
+                />
+              </div>
+              <div class="col-md-8 bg-dark">
+                <div class="card-body">
+                  <p>Album</p>
+                  <h3 class="card-title">Titolo</h3>
+                  <p class="card-text">
+                    This is a wider card with supporting text below as a natural
+                    lead-in to additional content. This content is a little bit
+                    longer.
+                  </p>
+                  <button
+                    type="button"
+                    class="btn btn-success rounded-5 text-dark"
+                  >
+                    Play
+                  </button>
+                  <button type="button" class="btn btn-outline-light rounded-5">
+                    Salva
+                  </button>
+                  <i class="bi bi-three-dots"></i>
+                  <p class="card-text">
+                    <small class="text-body-secondary"
+                      >Last updated 3 mins ago</small
+                    >
+                  </p>
+                </div>
+              </div>
             </div>
-            <div class="bg-dark text-white rounded-circle px-1">
-              <i class="bi bi-chevron-right"></i>
+          </div>
+          <!-- Fine Card centrale -->
+
+          <!-- Mini Cards (3 per riga) -->
+          <div class="row mt-4 mw-100">
+            <h4 class="text-light">Bunasera</h4>
+
+            <!-- Card 1 -->
+            <div class="col-4">
+              <div class="card bg-dark text-white carte">
+                <div class="card-body d-flex p-0">
+                  <img
+                    src="./assets/imgs/main/image-1.jpg"
+                    class="img-fluid rounded-end col-md-4"
+                    alt="Immagine Mini Card 1"
+                  />
+                  <div class="d-flex flex-column col-md-8 ms-2 py-2">
+                    <h5 class="card-title">Mini Card 1</h5>
+                    <p class="card-text">Contenuto della mini card 1.</p>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            <div class="ms-3 d-none" id="searchBarDiv">
-              <form id="formSearch">
-                <input
-                  type="text"
-                  class="form-control w-auto bg-dark text-white"
-                  id="formInput"
+            <!-- Card 2 -->
+            <div class="col-4">
+              <div class="card bg-dark text-white carte">
+                <div class="card-body d-flex p-0">
+                  <img
+                    src="./assets/imgs/main/image-2.jpg"
+                    class="img-fluid rounded-end col-md-4"
+                    alt="Immagine Mini Card 2"
+                  />
+                  <div class="d-flex flex-column col-md-8 ms-2 py-2">
+                    <h5 class="card-title">Mini Card 2</h5>
+                    <p class="card-text">Contenuto della mini card 2.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="col-4">
+              <div class="card bg-dark text-white carte">
+                <div class="card-body d-flex p-0">
+                  <img
+                    src="./assets/imgs/main/image-3.jpg"
+                    class="img-fluid rounded-end col-md-4"
+                    alt="Immagine Mini Card 3"
+                  />
+                  <div class="d-flex flex-column col-md-8 ms-2 py-2">
+                    <h5 class="card-title">Mini Card 3</h5>
+                    <p class="card-text">Contenuto della mini card 3.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Second Row -->
+          <div class="row mt-4 mw-100">
+            <!-- Card 4 -->
+            <div class="col-4">
+              <div class="card bg-dark text-white carte">
+                <div class="card-body d-flex p-0">
+                  <img
+                    src="./assets/imgs/main/image-4.jpg"
+                    class="img-fluid rounded-end col-md-4"
+                    alt="Immagine Mini Card 4"
+                  />
+                  <div class="d-flex flex-column col-md-8 ms-2 py-2">
+                    <h5 class="card-title">Mini Card 4</h5>
+                    <p class="card-text">Contenuto della mini card 4.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 5 -->
+            <div class="col-4">
+              <div class="card bg-dark text-white carte">
+                <div class="card-body d-flex p-0">
+                  <img
+                    src="./assets/imgs/main/image-5.jpg"
+                    class="img-fluid rounded-end col-md-4"
+                    alt="Immagine Mini Card 5"
+                  />
+                  <div class="d-flex flex-column col-md-8 ms-2 py-2">
+                    <h5 class="card-title">Mini Card 5</h5>
+                    <p class="card-text">Contenuto della mini card 5.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 6 -->
+            <div class="col-4">
+              <div class="card bg-dark text-white carte">
+                <div class="card-body d-flex p-0">
+                  <img
+                    src="./assets/imgs/main/image-6.jpg"
+                    class="img-fluid rounded-end col-md-4"
+                    alt="Immagine Mini Card 6"
+                  />
+                  <div class="d-flex flex-column col-md-8 ms-2 py-2">
+                    <h5 class="card-title">Mini Card 6</h5>
+                    <p class="card-text">Contenuto della mini card 6.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <h5 class="text-light my-3">Altro di ciò che ti piace</h5>
+
+          <div class="row mw-100">
+            <div class="col-3">
+              <div class="card custom-card bg-dark text-light carte2">
+                <img
+                  src="./assets/imgs/main/image-17.jpg"
+                  class="card-img-top img-fluid"
+                  alt="..."
                 />
-              </form>
+                <div class="card-body">
+                  <h6 class="card-text">Hot Hits Italia</h6>
+                  <p>La playlist più calda del momento</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-3">
+              <div class="card custom-card bg-dark text-light carte2">
+                <img
+                  src="./assets/imgs/search/image-14.jpg"
+                  class="card-img-top img-fluid"
+                  alt="..."
+                />
+                <div class="card-body">
+                  <h6 class="card-text">Big on the Internet</h6>
+                  <p>La playlist del momento</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-3">
+              <div class="card custom-card bg-dark text-light carte2">
+                <img
+                  src="./assets/imgs/search/image-45.png"
+                  class="card-img-top img-fluid"
+                  alt="..."
+                />
+                <div class="card-body">
+                  <h6 class="card-text">Pop Rising</h6>
+                  <p>The hits Of tornorroW are on</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-3">
+              <div class="card custom-card bg-dark text-light carte2">
+                <img
+                  src="./assets/imgs/search/image-23.jpg"
+                  class="card-img-top img-fluid"
+                  alt="..."
+                />
+                <div class="card-body">
+                  <h6 class="card-text">Canzoni tristi</h6>
+                  <p>it's ok not to be ok</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-        <div class="col-2 px-0 bg-dark">
-          <!-- Navbar laterale:sx -->
+
+        <div class="col-2 bg-dark">
+          <!-- Navbar laterale:dx -->
+
           <nav class="col-md-2 d-none d-md-block bg-dark sidebar w-100">
             <div class="p-2 d-flex justify-content-between align-items-center">
               <div class="">
@@ -123,9 +315,11 @@
                       />
                     </div>
                     <div class="col-7 px-0">
-                      <span class="my-0">arlie Hookham</span>
-                      <p class="my-0 fw-lighter">In Camera • Yumi</p>
-                      <p class="my-0 fw-lighter">album</p>
+                      <p class="my-0 text-center ciao">Carlie Hookham</p>
+                      <p class="my-0 fw-lighter text-center ciao">
+                        In Camera • Yumi
+                      </p>
+                      <p class="my-0 fw-lighter text-center ciao">album</p>
                     </div>
                     <div class="col-3 px-0">
                       <p class="fw-lighter text-end">2 min</p>
@@ -143,9 +337,11 @@
                       />
                     </div>
                     <div class="col-7 px-0">
-                      <span class="my-0">arlie Hookham</span>
-                      <p class="my-0 fw-lighter">In Camera • Yumi</p>
-                      <p class="my-0 fw-lighter">album</p>
+                      <p class="my-0 text-center ciao">Carlie Hookham</p>
+                      <p class="my-0 fw-lighter text-center ciao">
+                        In Camera • Yumi
+                      </p>
+                      <p class="my-0 fw-lighter text-center ciao">album</p>
                     </div>
                     <div class="col-3 px-0">
                       <p class="fw-lighter text-end">2 min</p>
@@ -163,9 +359,11 @@
                       />
                     </div>
                     <div class="col-7 px-0">
-                      <span class="my-0">arlie Hookham</span>
-                      <p class="my-0 fw-lighter">In Camera • Yumi</p>
-                      <p class="my-0 fw-lighter">album</p>
+                      <p class="my-0 text-center ciao">Carlie Hookham</p>
+                      <p class="my-0 fw-lighter text-center ciao">
+                        In Camera • Yumi
+                      </p>
+                      <p class="my-0 fw-lighter text-center ciao">album</p>
                     </div>
                     <div class="col-3 px-0">
                       <p class="fw-lighter text-end">2 min</p>
