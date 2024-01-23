@@ -94,3 +94,15 @@ fetchAlbumData(albumId)
   .catch(function (error) {
     console.error("Errore nel recupero dei dati dell'album:", error);
   });
+
+///////////////////////////
+// icon play
+const playIcon = document.createElement("div");
+playIcon.classList.add("col", "text-center", "play-icon");
+playIcon.innerHTML = '<i class="bi bi-play-circle-fill"></i>';
+songDiv.appendChild(playIcon);
+
+playIcon.addEventListener("click", function () {
+  //////////////
+  console.log("Riproduzione della canzone:", song.title);
+});
