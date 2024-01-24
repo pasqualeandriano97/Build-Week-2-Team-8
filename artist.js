@@ -1,6 +1,7 @@
 const artist = document.getElementById('artista')
 const img = document.getElementById('back-img')
 const visual = document.getElementById('visual')
+const visual2 = document.getElementById('visual2')
 const lista = document.getElementById('lista')
 
 function applicaSeparatore(importoNumerico) {
@@ -58,10 +59,12 @@ fetch(artistUrl)
       'url(' + dati.picture_xl + ')'
     visual.innerText =
       applicaSeparatore(dati.nb_fan) + ' ' + 'ascoltatori mensili'
+    visual2.innerText =
+      applicaSeparatore(dati.nb_fan) + ' ' + 'ascoltatori mensili'
 
     // fetch track list
 
-    fetch(artistUrl + '/top?limit=5')
+    fetch(artistUrl + '/top?limit=8')
       .then((response) => {
         if (response.ok) {
           return response.json()
@@ -81,10 +84,12 @@ fetch(artistUrl)
             'justify-content-between',
             'align-items-center',
             'mb-lg-4',
-            'mb-sm-1'
+            'mb-sm-2'
           )
           li.innerHTML = `
-          <div class=" col-8 p-0">
+          <div id="song" onclick="playAudio('${
+            element.preview
+          }')" class=" col-8 p-0">
             <span class="me-1 fs-6 text-light">${i}</span>
             <img
               src="${element.album.cover_small}"
@@ -111,3 +116,29 @@ fetch(artistUrl)
   .catch((response) => {
     throw Error(response)
   })
+
+document
+  .getElementsByClassName('bi-shuffle')[0]
+  .addEventListener('click', function () {
+    document
+      .getElementsByClassName('bi-shuffle')[0]
+      .classList.toggle('text-play')
+    document.getElementsByClassName('bi-dot')[0].classList.toggle('d-none')
+  })
+
+let player
+let urlPlayer
+
+function playAudio(url) {
+  player = new Audio(url)
+  player.play()
+}
+
+function stop() {
+  player.pause()
+  player.currentTime = 0
+}
+
+document.getElementById('pause').addEventListener('click', function () {
+  stop()
+})

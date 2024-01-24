@@ -37,3 +37,47 @@
   );
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#070708",endColorstr="#504e4e",GradientType=1);
 }
+
+.opacity-50:hover {
+  opacity: 100% !important;
+}
+
+#artista {
+  font-size: 6rem !important;
+  font-weight: 900;
+}
+
+.text-crop {
+  text-overflow: ellipsis !important;
+  margin-bottom: 12px !important;
+  cursor: pointer !important;
+  word-break: break-all !important;
+  overflow: hidden !important;
+  white-space: nowrap !important;
+}
+
+.text-crop:hover {
+  overflow: visible !important;
+  white-space: normal !important;
+  height: auto !important;
+}
+
+#top-img {
+  height: 400px !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+}
+
+.big {
+  font-size: 2.5rem !important;
+}
+
+.bi-shuffle {
+  cursor: pointer;
+}
+
+.bi-shuffle:hover {
+  color: rgb(30, 215, 96) !important;
+  text-shadow: rgb(30, 215, 96) 1px 0 10px;
+}
