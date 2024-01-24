@@ -11,6 +11,10 @@ const dNone1 = document.getElementById("d-none");
 const toArtistPage = document.getElementById("toArtistPage");
 let album = "";
 
+let temp = "x";
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+});
 const dNone = () => {
   searchBar.classList.toggle("d-none");
 };
@@ -20,6 +24,7 @@ search.addEventListener("click", (e) => {
 });
 
 const card = document.querySelectorAll(".nascosto");
+console.log(card);
 const deleteCard = () => {
   card.forEach((card) => {
     card.classList.add("d-none");
@@ -43,16 +48,25 @@ const navigazioneInalbumPage = function (id) {
   window.location.href = "./albumPage.html" + "?singleAlbum=" + parametro;
 };
 
+const repeteControl = (data) => {};
+const ciao = [];
+
 const createCard = (data) => {
-  console.log(data[0].album.title);
+  for (let i = 1; i < data.length; i++) {
+    ciao.push(data[i].album.title);
 
-  for (let i = 1; i < 7; i++) {
-    const col = document.createElement("div");
-    col.classList.add("col-6", "m-0");
+    console.log("ids", ciao[i]);
+    console.log(data[i].album.title);
+    if (ciao[i] != temp) {
+      temp = data[i].album.title;
+      console.log(temp);
+      console.log("ids", ciao);
+      const col = document.createElement("div");
+      col.classList.add("col-6", "m-0", "carte", "bg-dark");
 
-    col.innerHTML = `<a class="text-decoration-none" href="${
-      "./albumPage.html" + "?singleAlbum=" + data[i].id
-    }"><div class="card bg-dark text-white carte my-2">
+      col.innerHTML = `<a class="text-decoration-none" href="${
+        "./albumPage.html" + "?singleAlbum=" + data[i].album.id
+      }"><div class="card bg-dark text-white  my-2">
   <div class="card-body d-flex p-0">
     <img
       src="${data[i].album.cover}"
@@ -65,16 +79,20 @@ const createCard = (data) => {
     </div>
   </div>
 </div></a>`;
-    row1.appendChild(col);
+      row1.appendChild(col);
+    } else {
+      console.log("Non ho ripetuto");
+    }
   }
 };
+
 const countCols = () => {
   let cols = document.querySelectorAll(".carte");
   console.log(cols.length);
 
-  if (cols.length >= 12) {
+  if (cols.length > 6) {
     for (let i = 0; i < cols.length - 6; i++) {
-      cols[i].remove();
+      cols[i].classList.add("d-none");
     }
   }
 };
@@ -101,6 +119,7 @@ const searchData = (event) => {
       albumFind();
       deleteCard();
       dNone();
+
       createCard(response.data);
       countCols();
     })
@@ -134,3 +153,26 @@ const albumFind = () => {
       console.log(response);
     });
 };
+
+fetch(" https://striveschool-api.herokuapp.com/api/deezer/search?q=" + "salmo")
+  .then((res) => {
+    return res.json();
+  })
+  .then((response) => {
+    console.log(response);
+    response.data.forEach((element) => {});
+    title(response.data[0].title);
+    artist(response.data[0].artist.name);
+    artistSpan(response.data[0].artist.name);
+    toArtistPage.href =
+      "./artistPage.html" + "?artistId=" + response.data[0].artist.id;
+    let src = response.data[0].album.cover_big;
+    image1.src = src;
+    album = response.data[0].album.id;
+    albumFind();
+    deleteCard();
+
+    createCard(response.data);
+    countCols();
+  })
+  .catch((e) => {});
