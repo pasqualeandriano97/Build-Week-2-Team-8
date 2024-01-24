@@ -30,13 +30,7 @@
   background-color: #181818 !important;
 }
 
-/* //footer */
 @import url(//db.onlinewebfonts.com/c/860c3ec7bbc5da3e97233ccecafe512e?family=Circular+Std+Book);
-
-* {
-  box-sizing: border-box;
-  font-family: "circular std book", sans-serif;
-}
 
 body {
   margin: 0;
@@ -45,7 +39,7 @@ body {
   font-size: 14px;
   display: flex;
   flex-direction: column;
-  min-height: 100vh; /* Imposta l'altezza minima del corpo al 100% della viewport height */
+  min-height: 100vh;
 }
 
 .music-player {
@@ -57,7 +51,7 @@ body {
   position: fixed;
   bottom: 0;
   width: 100%;
-  z-index: 1; /* Aggiunto punto e virgola alla fine */
+  z-index: 1;
   height: 7rem;
   padding: var(--padding);
   color: var(--primary-color);
@@ -112,7 +106,6 @@ i:hover {
   -webkit-line-clamp: 1;
   overflow: hidden;
 }
-
 .title:hover,
 .artist:hover {
   text-decoration: underline;
