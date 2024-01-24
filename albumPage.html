@@ -11,179 +11,15 @@
     />
     <link rel="stylesheet" href="./style.css" />
     <link rel="stylesheet" href="./assets/css/circular-font.css" />
-
-    <style>
-      body {
-        background-color: #121212;
-        color: #fff;
-      }
-
-      main {
-        margin: 0 !important;
-        padding: 0 !important;
-      }
-
-      .album-details {
-        text-align: center;
-      }
-      #album-title {
-        margin-bottom: 10px;
-      }
-      #album-description {
-        margin-bottom: 20px;
-      }
-      #album-image {
-        margin-left: 30px;
-        max-width: 100%;
-        height: auto;
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      }
-      .song-list-header {
-        margin-top: 30px;
-        background-color: #282828;
-        padding: 10px;
-        border: none;
-      }
-      .song-list-header .col {
-        color: #b3b3b3;
-      }
-      .song-list-header .col:last-child {
-        text-align: end;
-      }
-      .song-item {
-        border-bottom: 1px solid #282828;
-        padding: 10px;
-      }
-      .song-item:nth-child(even) {
-        background-color: #121212;
-      }
-      .song-item .play-icon {
-        color: #1db954;
-      }
-      .song-item .col:first-child {
-        width: 10%;
-      }
-      .song-item .col:last-child {
-        text-align: end;
-      }
-      .song-item .col:nth-child(2) {
-        width: 70%;
-      }
-      .song-item .col:nth-child(3) {
-        text-align: center;
-        width: 10%;
-      }
-      .bi-play-circle-fill {
-        color: #1ed760 !important;
-        font-size: 3rem !important;
-      }
-      .bi-heart,
-      .bi-arrow-down-circle,
-      .bi-three-dots {
-        font-size: 0.7rem;
-        margin: 0 10px;
-      }
-
-      .bi-play-circle-fill:hover,
-      .bi-heart:hover,
-      .bi-arrow-down-circle:hover,
-      .bi-three-dots:hover {
-        color: #1db954 !important;
-        cursor: pointer;
-      }
-
-      .icon-spacing {
-        margin-right: 0px; /* Regola questo valore a seconda dello spazio desiderato tra le icone */
-      }
-
-      .icon-group span {
-        margin-right: 0; /* Nessun margine tra le icone */
-      }
-
-      .icon-group {
-        display: flex; /* Questo assicura che le icone siano allineate in fila */
-      }
-
-      .bi-clock {
-        font-size: 1rem;
-      }
-
-      .col-2 {
-        text-align: left;
-        padding: 0 20px;
-      }
-
-      #album-image {
-        max-width: 100%;
-        height: auto;
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      }
-      .album-details {
-        display: flex;
-        align-items: start;
-        /*margin-bottom: 20px;*/
-      }
-
-      .album-details .row {
-        align-items: center;
-      }
-
-      .album-info {
-        margin-left: 0;
-      }
-
-      .album-info h5,
-      .album-info h1,
-      .album-info p {
-        margin-left: -100px;
-      }
-
-      #album-title {
-        margin-bottom: 10px;
-      }
-
-      .row.mx-0 {
-        margin-right: 0;
-        margin-left: 0;
-      }
-
-      .col-7.px-0 {
-        padding-right: 0;
-        padding-left: 0;
-      }
-
-      .col-md-8 {
-        padding-left: 0;
-      }
-
-      .container-fluid {
-        padding: 0;
-        margin: 0;
-      }
-
-      .row {
-        margin-right: 0 !important;
-        margin-left: 0 !important;
-      }
-
-      .row > [class^="col-"],
-      .row > [class*=" col-"] {
-        padding-right: 0;
-        padding-left: 0;
-      }
-
-      .main-background {
-        min-height: 100vh;
-        background: rgb(0, 0, 0);
-        background: linear-gradient(
-          0deg,
-          rgba(0, 0, 0, 0.5) 0%,
-          rgba(163, 163, 163, 0.5) 100%
-        );
-      }
-    </style>
+    <link rel="stylesheet" href="./album.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style></style>
   </head>
   <body>
     <div class="container-fluid mx-0">
@@ -272,12 +108,7 @@
                   <div class="album-info">
                     <h5>ALBUM</h5>
                     <h1 id="album-title">Caricamento...</h1>
-                    <p id="album-description">
-                      <img
-                        src="percorso_dell_immagine.jpg"
-                        alt="Descrizione dell'immagine"
-                      />Attendere prego...
-                    </p>
+                    <p id="album-description"></p>
                   </div>
                 </div>
               </div>
@@ -306,30 +137,30 @@
                           <i class="bi bi-three-dots text-light fs-2"></i>
                         </span>
                       </div>
+                      <div class="ms-auto d-block d-md-none">
+                        <i
+                          class="bi bi-shuffle fs-2 text-light me-2 shuffle-icon"
+                        ></i>
+                      </div>
                     </div>
                   </div>
                   <div class="row align-items-center justify-content-between">
-                    <div class="col"><span class="me-1">#</span> TITOLO</div>
-                    <div class="col text-center">RIPRODUZIONI</div>
-                    <div class="col text-end">
-                      <i class="bi bi-clock"></i>
+                    <div class="col mobile">
+                      <span class="me-1 mobile">#</span> TITOLO
+                    </div>
+                    <div class="col text-center mobile">RIPRODUZIONI</div>
+                    <div class="col text-end mobile">
+                      <i class="bi bi-clock mobile"></i>
                     </div>
                   </div>
                   <div id="song-list"></div>
-                  <!--  <div
-                    class="row fw-bold align-items-center song-list justify-content-between"
-                  ></div> -->
                 </div>
               </div>
             </div>
           </main>
         </div>
-
-        <!---->
-
-        <!---->
         <div class="col-2 px-0 bg-dark">
-          <!-- Navbar laterale:sx -->
+          <!-- Navbar laterale:dx -->
           <nav class="col-md-2 d-none d-md-block bg-dark sidebar w-100">
             <div class="p-2 d-flex justify-content-between align-items-center">
               <div class="">
@@ -405,6 +236,82 @@
               </div>
             </div>
           </nav>
+        </div>
+      </div>
+    </div>
+    <footer class="">
+      <div class="music-player">
+        <div class="song-bar">
+          <div class="song-infos">
+            <div class="image-container">
+              <img
+                src="https://d2y6mqrpjbqoe6.cloudfront.net/image/upload/f_auto,q_auto/media/library-400/216_636967437355378335Your_Lie_Small_hq.jpg"
+                alt=""
+              />
+            </div>
+            <div class="song-description">
+              <p class="title">
+                Watashitachi wa Sou Yatte Ikite Iku Jinshu na no
+              </p>
+              <p class="artist">Masaru Yokoyama</p>
+            </div>
+          </div>
+          <div class="icons">
+            <i class="far fa-heart"></i>
+            <i class="fas fa-compress"></i>
+          </div>
+        </div>
+        <div class="progress-controller">
+          <div class="control-buttons">
+            <i class="fas fa-random text-success"></i>
+            <i class="fas fa-step-backward"></i>
+            <i class="play-pause fas fa-play"></i>
+            <i class="fas fa-step-forward"></i>
+            <i class="fas fa-undo-alt text-success"></i>
+          </div>
+          <div class="progress-container">
+            <span>0:49</span>
+            <div class="progress-bar">
+              <div class="progress"></div>
+            </div>
+            <span>3:15</span>
+          </div>
+        </div>
+        <div class="other-features">
+          <i class="bi bi-mic"></i>
+          <i class="bi bi-speaker"></i>
+          <i class="bi bi-music-note-list"></i>
+          <div class="volume-bar">
+            <i class="fas fa-volume-down"></i>
+            <div class="progress-bar">
+              <div class="progress"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <div class="container">
+      <div
+        class="row fixed-bottom d-lg-none justify-content-around bg-black bg-gradient bg-opacity-50"
+      >
+        <div class="col-3">
+          <a class="nav-link text-light fw-bold text-center" href="#">
+            <i class="bi bi-house-fill text-light me-2 ms-2 d-block big"></i>
+            Home
+          </a>
+        </div>
+        <div class="col-3">
+          <a class="nav-link text-light text-center" href="#">
+            <i class="bi bi-search text-light me-2 ms-2 d-block big"></i> Cerca
+          </a>
+        </div>
+        <div class="col-3">
+          <a class="nav-link text-light text-center" href="#">
+            <i
+              class="bi bi-music-note-list text-light text-light ms-2 me-2 d-block big"
+            ></i>
+            La tua libreria
+          </a>
         </div>
       </div>
     </div>

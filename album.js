@@ -34,7 +34,7 @@ const fetchAlbumData = function (albumId) {
 };
 
 // formattare durata
-function timing(duration) {
+/*function timing(duration) {
   const slots = [];
   duration = Math.ceil(duration);
   while (duration > 59 && slots.length < 2) {
@@ -43,6 +43,13 @@ function timing(duration) {
   }
   if (duration > 0) slots.push(duration);
   return slots.reverse().join(":");
+}*/
+function timing(duration) {
+  const minutes = Math.floor(duration / 60);
+  const seconds = duration % 60;
+  return `${minutes.toString().padStart(2, "0")}:${seconds
+    .toString()
+    .padStart(2, "0")}`;
 }
 
 // per mettere i punti nei n delle riproduzioni
@@ -75,9 +82,12 @@ const uptadeSongList = function (tracce) {
       "justify-content-between"
     );
     songDiv.innerHTML = `
-    <div class="col"><span class="me-1">${i}</span>${track.title}</div>
-    <div class="col text-center">${applicaSeparatore2(track.rank)}</div>
-    <div class="col text-end">
+    <div class="col"><span class="me-1">${i}</span>${track.title}
+    <div class="song-artist">${track.artist.name}</div></div>
+    <div class="col text-center hide-on-mobile">${applicaSeparatore2(
+      track.rank
+    )}</div>
+    <div class="col text-end hide-on-mobile">
       <p>${timing(track.duration)}</p>
     </div>
     `;
@@ -96,7 +106,27 @@ const updatePageWithAlbumData = function (albumData) {
 
   // p
   const albumDescription = document.getElementById("album-description");
-  albumDescription.innerText = albumData.description;
+  const artistName = albumData.artist.name;
+  const releaseYear = new Date(albumData.release_date).getFullYear();
+  const trackCount = albumData.nb_tracks;
+  const totalDuration = timing(albumData.duration);
+  //albumDescription.innerText = `${artistName} ${releaseYear} ${trackCount} brani, ${totalDuration}`;
+  const artistImage = document.createElement("img");
+  artistImage.src = albumData.artist.picture;
+  artistImage.alt = artistName;
+
+  artistImage.style.width = "50px";
+  artistImage.style.height = "50px";
+  artistImage.style.borderRadius = "50%";
+
+  // Aggiungo l'immagine dell'artista prima del testo nel paragrafo
+  albumDescription.insertBefore(artistImage, albumDescription.firstChild);
+
+  // Aggiungo il testo relativo alle informazioni dell'album
+  albumDescription.insertAdjacentText(
+    "beforeend",
+    ` ${artistName} ${releaseYear} ${trackCount} brani, ${totalDuration}`
+  );
 
   // immagine album:
   const albumImage = document.getElementById("album-image");
