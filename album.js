@@ -23,6 +23,7 @@ const fetchAlbumData = function (albumId) {
     .then((dataAlbum) => {
       console.log(dataAlbum);
       updatePageWithAlbumData(dataAlbum);
+      uptadeSongList(dataAlbum);
       // fetchAlbumTracks(albumId); // ERROR:Chiamata per ottenere le tracce
     })
 
@@ -32,27 +33,58 @@ const fetchAlbumData = function (albumId) {
     });
 };
 
-// Funzione per ottenere tracce album:
-// "https://api.deezer.com/album/75621062/tracks" ciclo  tracks
-const fetchAlbumTracks = function (albumId) {
-  const apiUrl = `https://striveschool-api.herokuapp.com/api/deezer/album/${albumId}/tracks`;
-  return fetch(apiUrl)
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error(`Errore nella richiesta: ${response.status}`);
-      }
-      return response.json();
-    })
-    .then((trackData) => {
-      updateSongList(trackData.data); // Aggiorna la lista delle canzoni
-      console.log(trackData);
-    })
-    .catch((error) => {
-      console.error("Errore nella chiamata API delle tracce:", error);
-      throw error;
-    });
-};
+// formattare durata
+function timing(duration) {
+  const slots = [];
+  duration = Math.ceil(duration);
+  while (duration > 59 && slots.length < 2) {
+    slots.push((duration % 60).toString().padStart(2, "0"));
+    duration = Math.floor(duration / 60);
+  }
+  if (duration > 0) slots.push(duration);
+  return slots.reverse().join(":");
+}
 
+// per mettere i punti nei n delle riproduzioni
+function applicaSeparatore2(importoNumerico) {
+  var importo = importoNumerico.toString();
+  if (importo.length > 3) {
+    importo = importo
+      .split("", importo.length)
+      .reverse()
+      .join("")
+      .replace(/([0-9]{3})/g, "$1.");
+    importo = importo
+      .split("", importo.length - 1)
+      .reverse()
+      .join("");
+  }
+  return importo;
+}
+
+const uptadeSongList = function (tracce) {
+  const songsListElement = document.getElementById("song-list");
+  let i = 1;
+  console.log(tracce.tracks);
+  tracce.tracks.data.forEach(function (track) {
+    console.log(track);
+    const songDiv = document.createElement("div");
+    songDiv.classList.add(
+      "row",
+      "align-items-center",
+      "justify-content-between"
+    );
+    songDiv.innerHTML = `
+    <div class="col"><span class="me-1">${i}</span>${track.title}</div>
+    <div class="col text-center">${applicaSeparatore2(track.rank)}</div>
+    <div class="col text-end">
+      <p>${timing(track.duration)}</p>
+    </div>
+    `;
+    i++;
+    songsListElement.appendChild(songDiv);
+  });
+};
 //
 // Funzione per aggiornare la pagina con i dati dell'album ottenuti dall'API
 const updatePageWithAlbumData = function (albumData) {
@@ -70,49 +102,6 @@ const updatePageWithAlbumData = function (albumData) {
   const albumImage = document.getElementById("album-image");
   albumImage.src = albumData.cover;
   albumImage.alt = albumData.title;
-
-  // lista canzoni:
-  const songList = document.getElementById("song-list");
-  albumData.songs.forEach(function (song, index) {
-    const songDiv = document.createElement("div");
-    songDiv.classList.add("row", "align-items-center", "mt-2", "fw-bold");
-
-    // numero di traccia:
-    const trackNumber = document.createElement("div");
-    trackNumber.classList.add("col");
-    trackNumber.innerText = index + 1;
-    songDiv.appendChild(trackNumber);
-
-    // titolo canzone:
-    const songTitle = document.createElement("div");
-    songTitle.classList.add("col");
-    songTitle.innerText = song.title;
-    songDiv.appendChild(songTitle);
-
-    // icon play:
-    const playIcon = document.createElement("div");
-    playIcon.classList.add("col", "text-center", "play-icon");
-    playIcon.innerHTML = '<i class="bi bi-play-circle-fill"></i>';
-    songDiv.appendChild(playIcon);
-
-    playIcon.addEventListener("click", function () {
-      console.log("Riproduzione della canzone:", song.title);
-    });
-
-    // RIPRODUZIONI:
-    const songReproductions = document.createElement("div");
-    songReproductions.classList.add("col", "text-center");
-    songReproductions.innerText = song.reproductions;
-    songDiv.appendChild(songReproductions);
-
-    // DURATA:
-    const songDuration = document.createElement("div");
-    songDuration.classList.add("col", "text-end");
-    songDuration.innerHTML = `<i class="bi bi-clock"></i> ${song.duration}`;
-    songDiv.appendChild(songDuration);
-
-    songList.appendChild(songDiv);
-  });
 };
 
 // ID album dalla URL che prendo dalla window:
