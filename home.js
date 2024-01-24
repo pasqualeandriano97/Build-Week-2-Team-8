@@ -8,7 +8,7 @@ const artist1 = document.getElementById("artist1");
 const artist2 = document.getElementById("artist2");
 const row1 = document.getElementById("row1");
 const dNone1 = document.getElementById("d-none");
-
+const toArtistPage = document.getElementById("toArtistPage");
 let album = "";
 
 const dNone = () => {
@@ -38,14 +38,21 @@ const artistSpan = (text) => {
   artist2.innerText = text;
 };
 
+const navigazioneInalbumPage = function (id) {
+  let parametro = id;
+  window.location.href = "./albumPage.html" + "?singleAlbum=" + parametro;
+};
+
 const createCard = (data) => {
   console.log(data[0].album.title);
 
   for (let i = 1; i < 7; i++) {
     const col = document.createElement("div");
-    col.classList.add("col-4", "m-0");
+    col.classList.add("col-6", "m-0");
 
-    col.innerHTML = `<div class="card bg-dark text-white carte my-2">
+    col.innerHTML = `<a class="text-decoration-none" href="${
+      "./albumPage.html" + "?singleAlbum=" + data[i].id
+    }"><div class="card bg-dark text-white carte my-2">
   <div class="card-body d-flex p-0">
     <img
       src="${data[i].album.cover}"
@@ -57,7 +64,7 @@ const createCard = (data) => {
       
     </div>
   </div>
-</div>`;
+</div></a>`;
     row1.appendChild(col);
   }
 };
@@ -86,6 +93,8 @@ const searchData = (event) => {
       title(response.data[0].album.title);
       artist(response.data[0].artist.name);
       artistSpan(response.data[0].artist.name);
+      toArtistPage.href =
+        "./artistPage.html" + "?artistId=" + response.data[0].artist.id;
       let src = response.data[0].album.cover_big;
       image1.src = src;
       album = response.data[0].album.id;
