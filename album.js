@@ -4,7 +4,7 @@ const getAlbumIdFromUrl = function () {
   const currentUrl = window.location.href;
   const url = new URL(currentUrl);
   const searchParams = url.searchParams; // paramatres di query dall'URL
-  const albumId = searchParams.get("albumId");
+  const albumId = searchParams.get("singleAlbum");
   return albumId;
 };
 //////
@@ -35,7 +35,7 @@ const playTrack = (previewUrl, songElement) => {
 // Funzione per effettuare la chiamata API e ottenere i dati dell'album
 const fetchAlbumData = function (albumId) {
   // endpoint dell'API per ottenere i dati dell'album:
-  const apiUrl = `https://striveschool-api.herokuapp.com/api/deezer/album/75621062`; // ${albumId}
+  const apiUrl = `https://striveschool-api.herokuapp.com/api/deezer/album/${albumId}`; //     2526238131  75621062 76311092
   return fetch(apiUrl) // fetch all'API
     .then((response) => {
       if (!response.ok) {

@@ -51,7 +51,7 @@ const createCard = (data) => {
     col.classList.add("col-6", "m-0");
 
     col.innerHTML = `<a class="text-decoration-none" href="${
-      "./albumPage.html" + "?singleAlbum=" + data[i].id
+      "./albumPage.html" + "?singleAlbum=" + data[i].album.id
     }"><div class="card bg-dark text-white carte my-2">
   <div class="card-body d-flex p-0">
     <img
