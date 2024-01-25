@@ -1,3 +1,11 @@
+const getArtistFromUrl = function () {
+  const currentUrl = window.location.href
+  const url = new URL(currentUrl)
+  const searchParams = url.searchParams // paramatres di query dall'URL
+  const artistId = searchParams.get('artistId')
+  return artistId
+}
+
 const artist = document.getElementById('artista')
 const img = document.getElementById('back-img')
 const visual = document.getElementById('visual')
@@ -47,8 +55,9 @@ function timing(duration) {
   if (duration > 0) slots.push(duration)
   return slots.reverse().join(':')
 }
-
-const artistUrl = 'https://striveschool-api.herokuapp.com/api/deezer/artist/412'
+const artistId = getArtistFromUrl()
+const artistUrl =
+  'https://striveschool-api.herokuapp.com/api/deezer/artist/' + artistId
 
 fetch(artistUrl)
   .then((response) => {
