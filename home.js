@@ -13,6 +13,7 @@ const playerButton = document.getElementById("playerButton");
 const playerButton2 = document.getElementById("playerButton2");
 const footer = document.getElementById("footer");
 let album = "";
+const audioM = document.getElementById("audioM");
 
 let temp = "x";
 form.addEventListener("submit", (e) => {
@@ -28,9 +29,10 @@ search.addEventListener("click", (e) => {
 let audio;
 const playMusic = (url) => {
   audio = new Audio(url);
-
+  audio.pause();
   audio.play();
 };
+console.log(audio);
 
 const card = document.querySelectorAll(".nascosto");
 
@@ -106,7 +108,12 @@ let buttons = document.getElementsByClassName(zero)[0];
 console.log("buttons", buttons);
 
 const searchData = (event) => {
-  const value = event.target.value || "salmo";
+  let value;
+  if (event) {
+    value = event.target.value;
+  } else {
+    value = "tenore di Bitti";
+  }
 
   fetch(" https://striveschool-api.herokuapp.com/api/deezer/search?q=" + value)
     .then((res) => {
@@ -125,10 +132,13 @@ const searchData = (event) => {
       deleteCard();
       dNone();
       console.log(response.data[0].preview);
+
+      audioM.src = response.data[0].preview;
       playerButton.addEventListener("click", () => {
         footer.classList.remove("d-lg-none");
-        playMusic(response.data[0].preview);
+        audioM.play();
       });
+
       createCard(response.data);
 
       countCols();
@@ -150,7 +160,7 @@ const debounce = (callback, waitTime) => {
     }, waitTime);
   };
 };
-
+searchData();
 const debounceHandler = debounce(searchData, 1000);
 formInput.addEventListener("input", debounceHandler);
 
