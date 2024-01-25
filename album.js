@@ -7,6 +7,29 @@ const getAlbumIdFromUrl = function () {
   const albumId = searchParams.get("albumId");
   return albumId;
 };
+//////
+const audioPlayer = new Audio();
+
+audioPlayer.addEventListener("ended", () => {
+  const currentPlaying = document.querySelector(".playing");
+  if (currentPlaying) {
+    currentPlaying.classList.remove("playing");
+  }
+});
+
+const playTrack = (previewUrl, songElement) => {
+  // Trovo l'elemento attualmente in riproduzione e rimuovi la classe 'playing':
+  const currentlyPlaying = document.querySelector(".playing");
+  if (currentlyPlaying) {
+    currentlyPlaying.classList.remove("playing");
+  }
+
+  // Aggiungo la classe 'playing' alla canzone corrente:
+  songElement.classList.add("playing");
+
+  audioPlayer.src = previewUrl;
+  audioPlayer.play();
+}; ////
 
 //FETCH:
 // Funzione per effettuare la chiamata API e ottenere i dati dell'album
@@ -26,24 +49,12 @@ const fetchAlbumData = function (albumId) {
       uptadeSongList(dataAlbum);
       // fetchAlbumTracks(albumId); // ERROR:Chiamata per ottenere le tracce
     })
-
     .catch((error) => {
       console.error("Errore nella chiamata API:", error);
       throw error;
     });
 };
 
-// formattare durata
-/*function timing(duration) {
-  const slots = [];
-  duration = Math.ceil(duration);
-  while (duration > 59 && slots.length < 2) {
-    slots.push((duration % 60).toString().padStart(2, "0"));
-    duration = Math.floor(duration / 60);
-  }
-  if (duration > 0) slots.push(duration);
-  return slots.reverse().join(":");
-}*/
 function timing(duration) {
   const minutes = Math.floor(duration / 60);
   const seconds = duration % 60;
@@ -90,12 +101,21 @@ const uptadeSongList = function (tracce) {
     <div class="col text-end hide-on-mobile">
       <p>${timing(track.duration)}</p>
     </div>
+    <div class="col-auto d-block d-md-none">
+        <i class="bi bi-three-dots-vertical"></i>
+      </div>
     `;
+    //////
+    songDiv.addEventListener("click", () => {
+      playTrack(track.preview, songDiv);
+    });
+    //////
     i++;
     songsListElement.appendChild(songDiv);
   });
 };
 //
+
 // Funzione per aggiornare la pagina con i dati dell'album ottenuti dall'API
 const updatePageWithAlbumData = function (albumData) {
   // itera albumData(oggetto)
@@ -115,6 +135,17 @@ const updatePageWithAlbumData = function (albumData) {
   artistImage.src = albumData.artist.picture;
   artistImage.alt = artistName;
 
+  // Creazione e stile per artistName
+  const artistNameSpan = document.createElement("span");
+  artistNameSpan.textContent = artistName;
+  artistNameSpan.style.fontWeight = "bold";
+  artistNameSpan.style.marginLeft = "5px";
+
+  // Creazione e stile per totalDuration
+  const totalDurationSpan = document.createElement("span");
+  totalDurationSpan.textContent = ` ${totalDuration} sec.`;
+  totalDurationSpan.style.color = "grey";
+  /////
   artistImage.style.width = "50px";
   artistImage.style.height = "50px";
   artistImage.style.borderRadius = "50%";
@@ -123,21 +154,36 @@ const updatePageWithAlbumData = function (albumData) {
   albumDescription.insertBefore(artistImage, albumDescription.firstChild);
 
   // Aggiungo il testo relativo alle informazioni dell'album
+  albumDescription.appendChild(artistNameSpan); // dubbi
   albumDescription.insertAdjacentText(
     "beforeend",
-    ` ${artistName} ${releaseYear} ${trackCount} brani, ${totalDuration}`
+    `  • ${releaseYear} • ${trackCount} brani, ` // ${artistName} ${totalDuration} sec.
   );
-
+  albumDescription.appendChild(totalDurationSpan); // dubbi
   // immagine album:
   const albumImage = document.getElementById("album-image");
   albumImage.src = albumData.cover;
+  // draw(albumData.cover); //
   albumImage.alt = albumData.title;
 };
 
-// ID album dalla URL che prendo dalla window:
+// Chiamata API per ottenere i dati dell'album
 const albumId = getAlbumIdFromUrl();
 fetchAlbumData(albumId)
-  .then(updatePageWithAlbumData)
+  .then((albumData) => {
+    updatePageWithAlbumData(albumData);
+    uptadeSongList(albumData);
+    ///////
+    // Aggiungi l'ascoltatore di eventi al pulsante di play
+    const playButton = document.querySelector(".bi-play-circle-fill");
+    if (playButton) {
+      playButton.addEventListener("click", () => {
+        const firstTrackPreviewUrl = albumData.tracks.data[0].preview;
+        playTrack(firstTrackPreviewUrl);
+      });
+    }
+  })
+  //////
   .catch(function (error) {
     console.error("Errore nel recupero dei dati dell'album:", error);
   });
