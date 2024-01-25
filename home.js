@@ -10,8 +10,7 @@ const row1 = document.getElementById("row1");
 const dNone1 = document.getElementById("d-none");
 const toArtistPage = document.getElementById("toArtistPage");
 const playerButton = document.getElementById("playerButton");
-const playerButton2 = document.getElementById("playerButton2");
-const footer = document.getElementById("footer");
+const footer = document.getElementById("player");
 let album = "";
 const audioM = document.getElementById("audioM");
 
@@ -22,17 +21,13 @@ form.addEventListener("submit", (e) => {
 const dNone = () => {
   searchBar.classList.toggle("d-none");
 };
+const dnoneF = () => {
+  footer.classList.remove("d-none");
+};
 search.addEventListener("click", (e) => {
   e.preventDefault();
   dNone();
 });
-let audio;
-const playMusic = (url) => {
-  audio = new Audio(url);
-  audio.pause();
-  audio.play();
-};
-console.log(audio);
 
 const card = document.querySelectorAll(".nascosto");
 
@@ -55,7 +50,14 @@ const artistSpan = (text) => {
 };
 
 const ciao = [];
-
+const compileFooter = (data) => {
+  const img = document.getElementById("player-img");
+  const title = document.getElementById("title-song");
+  const artist = document.getElementById("artist-player");
+  img.src = data[0].album.cover;
+  title.innerText = data[0].album.title;
+  artist.innerText = data[0].artist.name;
+};
 const createCard = (data) => {
   for (let i = 1; i < data.length; i++) {
     ciao.push(data[i].album.title);
@@ -103,9 +105,8 @@ const countCols = () => {
 
 let params = "";
 let zero = 0;
-let buttons = document.getElementsByClassName(zero)[0];
 
-console.log("buttons", buttons);
+let volume = document.getElementById("volume-slider");
 
 const searchData = (event) => {
   let value;
@@ -132,18 +133,16 @@ const searchData = (event) => {
       deleteCard();
       dNone();
       console.log(response.data[0].preview);
-
+      compileFooter(response.data);
       audioM.src = response.data[0].preview;
-      playerButton.addEventListener("click", () => {
-        footer.classList.remove("d-lg-none");
-        audioM.play();
+      playerButton.addEventListener("click", (e) => {
+        playAudio(e);
+        dnoneF();
       });
 
       createCard(response.data);
 
       countCols();
-
-      console.log(audio);
     })
     .catch((error) => {
       alert(error + "si è verificato un errore");
@@ -163,6 +162,50 @@ const debounce = (callback, waitTime) => {
 searchData();
 const debounceHandler = debounce(searchData, 1000);
 formInput.addEventListener("input", debounceHandler);
+let countsecond = 0;
+let player;
+let urlPlayer;
+let counter;
+function playAudio(e) {
+  audioM.play();
+
+  counter = setInterval(contatore, 1000);
+  contatore();
+  document.getElementById("player").classList.toggle("d-none");
+  let volume = document.getElementById("volume-slider");
+  volume.addEventListener("input", function (e) {
+    audioM.volume = e.currentTarget.value / 100;
+  });
+}
+function stopcounter() {
+  clearInterval(counter);
+
+  countsecond = 0;
+
+  document.getElementById("bar").style.width = countsecond + "%";
+}
+
+function stop() {
+  document.getElementById("player").classList.toggle("d-none");
+  audioM.pause();
+  audioM.currentTime = 0;
+  stopcounter();
+}
+
+document.querySelector("#pause-player").addEventListener("click", function (e) {
+  console.log(e.target);
+  stop();
+});
+
+function contatore() {
+  document.getElementById("bar").style.width = countsecond + "%";
+  countsecond = countsecond + 3;
+  console.log(countsecond);
+  if (countsecond > 95) {
+    countsecond = 0;
+    stopcounter();
+  }
+}
 
 const navigazioneInalbumPage = function (id) {
   let parametro = id;
