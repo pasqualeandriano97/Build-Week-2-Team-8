@@ -9,6 +9,9 @@ const artist2 = document.getElementById("artist2");
 const row1 = document.getElementById("row1");
 const dNone1 = document.getElementById("d-none");
 const toArtistPage = document.getElementById("toArtistPage");
+const playerButton = document.getElementById("playerButton");
+const playerButton2 = document.getElementById("playerButton2");
+const footer = document.getElementById("footer");
 let album = "";
 
 let temp = "x";
@@ -22,9 +25,21 @@ search.addEventListener("click", (e) => {
   e.preventDefault();
   dNone();
 });
+let audio;
+const playMusic = (url) => {
+  audio = new Audio(url);
+
+  audio.play();
+};
+
+// const playMusics = (url) => {
+//   let audio = new Audio(url);
+//   console.log(url);
+//   audio.play();
+// };
 
 const card = document.querySelectorAll(".nascosto");
-console.log(card);
+
 const deleteCard = () => {
   card.forEach((card) => {
     card.classList.add("d-none");
@@ -48,25 +63,21 @@ const navigazioneInalbumPage = function (id) {
   window.location.href = "./albumPage.html" + "?singleAlbum=" + parametro;
 };
 
-const repeteControl = (data) => {};
 const ciao = [];
 
 const createCard = (data) => {
   for (let i = 1; i < data.length; i++) {
     ciao.push(data[i].album.title);
 
-    console.log("ids", ciao[i]);
-    console.log(data[i].album.title);
     if (ciao[i] != temp) {
       temp = data[i].album.title;
-      console.log(temp);
-      console.log("ids", ciao);
-      const col = document.createElement("div");
-      col.classList.add("col-6", "m-0", "carte", "bg-dark");
 
-      col.innerHTML = `<a class="text-decoration-none" href="${
+      const col = document.createElement("div");
+      col.classList.add("col", "m-0", "carte", "bg-dark", "p-1");
+
+      col.innerHTML = `<a class="text-decoration-none " href="${
         "./albumPage.html" + "?singleAlbum=" + data[i].album.id
-      }"><div class="card bg-dark text-white  my-2">
+      }"><div class="card bg-dark text-white  p-0">
   <div class="card-body d-flex p-0">
     <img
       src="${data[i].album.cover}"
@@ -80,6 +91,9 @@ const createCard = (data) => {
   </div>
 </div></a>`;
       row1.appendChild(col);
+      if (ciao.length >= 30) {
+        ciao.splice(0, ciao.length);
+      }
     } else {
       console.log("Non ho ripetuto");
     }
@@ -88,7 +102,6 @@ const createCard = (data) => {
 
 const countCols = () => {
   let cols = document.querySelectorAll(".carte");
-  console.log(cols.length);
 
   if (cols.length > 6) {
     for (let i = 0; i < cols.length - 6; i++) {
@@ -98,16 +111,19 @@ const countCols = () => {
 };
 
 let params = "";
+let zero = 0;
+let buttons = document.getElementsByClassName(zero)[0];
+
+console.log("buttons", buttons);
 
 const searchData = (event) => {
-  const value = event.target.value;
-  console.log("Searching...", value);
+  const value = event.target.value || "salmo";
+
   fetch(" https://striveschool-api.herokuapp.com/api/deezer/search?q=" + value)
     .then((res) => {
       return res.json();
     })
     .then((response) => {
-      console.log(response);
       title(response.data[0].album.title);
       artist(response.data[0].artist.name);
       artistSpan(response.data[0].artist.name);
@@ -116,14 +132,23 @@ const searchData = (event) => {
       let src = response.data[0].album.cover_big;
       image1.src = src;
       album = response.data[0].album.id;
-      albumFind();
+      zero++;
       deleteCard();
       dNone();
-
+      console.log(response.data[0].preview);
+      playerButton.addEventListener("click", () => {
+        footer.classList.remove("d-lg-none");
+        playMusic(response.data[0].preview);
+      });
       createCard(response.data);
+
       countCols();
+
+      console.log(audio);
     })
-    .catch((e) => {});
+    .catch((error) => {
+      alert(error + "si è verificato un errore");
+    });
 };
 
 const debounce = (callback, waitTime) => {
@@ -140,39 +165,28 @@ const debounce = (callback, waitTime) => {
 const debounceHandler = debounce(searchData, 1000);
 formInput.addEventListener("input", debounceHandler);
 
-console.log(image1);
-const albumFind = () => {
-  fetch("https://striveschool-api.herokuapp.com/api/deezer/album/" + album)
-    .then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-    })
+// fetch(" https://striveschool-api.herokuapp.com/api/deezer/search?q=" + "salmo")
+//   .then((res) => {
+//     return res.json();
+//   })
+//   .then((response) => {
+//     title(response.data[0].title);
+//     artist(response.data[0].artist.name);
+//     artistSpan(response.data[0].artist.name);
+//     toArtistPage.href =
+//       "./artistPage.html" + "?artistId=" + response.data[0].artist.id;
+//     let src = response.data[0].album.cover_big;
+//     image1.src = src;
+//     album = response.data[0].album.id;
 
-    .then((response) => {
-      console.log(response);
-    });
-};
-
-fetch(" https://striveschool-api.herokuapp.com/api/deezer/search?q=" + "salmo")
-  .then((res) => {
-    return res.json();
-  })
-  .then((response) => {
-    console.log(response);
-    response.data.forEach((element) => {});
-    title(response.data[0].title);
-    artist(response.data[0].artist.name);
-    artistSpan(response.data[0].artist.name);
-    toArtistPage.href =
-      "./artistPage.html" + "?artistId=" + response.data[0].artist.id;
-    let src = response.data[0].album.cover_big;
-    image1.src = src;
-    album = response.data[0].album.id;
-    albumFind();
-    deleteCard();
-
-    createCard(response.data);
-    countCols();
-  })
-  .catch((e) => {});
+//     deleteCard();
+//     playerButton.addEventListener("click", () => {
+//       footer.classList.remove("d-lg-none");
+//       playMusics(response.data[0].preview);
+//     });
+//     createCard(response.data);
+//     countCols();
+//   })
+//   .catch((error) => {
+//     alert(error + "si è verificato un errore");
+//   });

@@ -122,7 +122,7 @@
                 </div>
                 <div class="col-md-8 bg-dark">
                   <div class="card-body h-100 position-relative">
-                    <p>Album</p>
+                    <p>Brano</p>
                     <h3 class="card-title" id="title1">Highway to Hell</h3>
                     <a
                       href=""
@@ -136,12 +136,16 @@
                       <span id="artist2">AC/DC</span>
                     </p>
                     <div class="position-absolute bottom-0 start-5">
-                      <button
-                        type="button"
-                        class="btn btn-success rounded-5 text-dark"
-                      >
-                        Play
-                      </button>
+                      <div class="d-inline" id="containerButton">
+                        <button
+                          type="button"
+                          class="btn btn-success rounded-5 text-dark 0"
+                          id="playerButton"
+                          onclick="playMusic()"
+                        >
+                          Play
+                        </button>
+                      </div>
                       <button
                         type="button"
                         class="btn btn-outline-light rounded-5 mx-2"
@@ -498,7 +502,7 @@
         </div>
       </div>
     </main>
-    <footer class="d-none d-lg-block">
+    <footer class="d-none d-lg-block d-lg-none" id="footer">
       <div class="music-player">
         <div class="song-bar">
           <div class="song-infos">
