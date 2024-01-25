@@ -215,6 +215,10 @@ color: #1db954 !important;
   color: #1db954;
 }
 
+#player {
+  height: 120px !important
+}
+
 @media (max-width: 576px) {
 
   .container-fluid {
@@ -364,7 +368,44 @@ color: #1db954 !important;
       display: none;
   }
 
+  #player {
+    height: 80px; /* Ridimensiona l'altezza */
+    padding: 10px; /* Aggiungi un po' di spazio interno */
+  }
+
+  #player #now-song {
+    flex: 0 0 20%; /* Riduci la larghezza e mantieni la dimensione */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #player-img {
+    width: 50px; /* Riduci la dimensione dell'immagine */
+    height: 50px;
+    margin-right: 5px;
+  }
+
+  #title-song, #player .text-light {
+    display: none; /* Nascondi i testi per risparmiare spazio */
+  }
+
+  #player .col-4, #player .col-3 {
+    flex: 0 0 40%; /* Modifica la larghezza delle colonne */
+    justify-content: center;
+  }
+
+  #player .bi {
+    font-size: 1.5rem; /* Riduci la dimensione delle icone */
+  }
+
+  #volume-slider {
+    width: 100px; /* Riduci la lunghezza dello slider del volume */
+  }
+
 }
+
+
 
 @media (min-width: 577px) and (max-width: 768px) {
   .album-details .row,
@@ -433,4 +474,43 @@ color: #1db954 !important;
   footer {
       display: none;
       }
+     
+      #player {
+        height: 100px; /* Adeguata altezza del player */
+        padding: 10px; /* Spazio interno per separare gli elementi */
+      }
+    
+      #player #now-song {
+        flex: 0 0 25%; /* Ridimensiona la larghezza dell'immagine e del testo */
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+      }
+    
+      #player-img {
+        width: 60px; /* Ridimensiona l'immagine */
+        height: 60px;
+        margin-right: 10px;
+      }
+    
+      #title-song, #player .text-light {
+        font-size: 0.9rem; /* Ridimensiona il testo per una migliore leggibilità */
+        white-space: nowrap; /* Evita interruzioni di riga */
+        overflow: hidden; /* Nasconde il testo in eccesso */
+        text-overflow: ellipsis; /* Aggiunge puntini di sospensione se il testo è troppo lungo */
+      }
+    
+      #player .col-4, #player .col-3 {
+        flex: 0 0 37.5%; /* Adegua la larghezza delle colonne dei controlli e del volume */
+        justify-content: center;
+      }
+    
+      #player .bi {
+        font-size: 2rem; /* Dimensione adeguata delle icone */
+      }
+    
+      #volume-slider {
+        width: 120px; /* Lunghezza adeguata dello slider del volume */
+      }
+
   }

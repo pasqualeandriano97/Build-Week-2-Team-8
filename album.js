@@ -9,6 +9,8 @@ const getAlbumIdFromUrl = function () {
 };
 //////
 const audioPlayer = new Audio();
+let countsecond = 0;
+let counter;
 
 audioPlayer.addEventListener("ended", () => {
   const currentPlaying = document.querySelector(".playing");
@@ -17,7 +19,7 @@ audioPlayer.addEventListener("ended", () => {
   }
 });
 
-const playTrack = (previewUrl, songElement) => {
+const playTrack = (previewUrl, songElement, trackInfo) => {
   // Trovo l'elemento attualmente in riproduzione e rimuovi la classe 'playing':
   const currentlyPlaying = document.querySelector(".playing");
   if (currentlyPlaying) {
@@ -27,9 +29,81 @@ const playTrack = (previewUrl, songElement) => {
   // Aggiungo la classe 'playing' alla canzone corrente:
   songElement.classList.add("playing");
 
+  // Imposta la sorgente audio e riproduci
   audioPlayer.src = previewUrl;
   audioPlayer.play();
+
+  // Aggiorna l'interfaccia utente del player
+  updatePlayerUI(trackInfo);
+
+  // Avvia il contatore della barra di progresso
+  startCounter();
 }; ////
+
+// Funzione per aggiornare l'interfaccia utente del player
+function updatePlayerUI(trackInfo) {
+  const playerImg = document.getElementById("player-img");
+  const titleSong = document.getElementById("title-song");
+  playerImg.src = trackInfo.album.cover;
+  titleSong.textContent = trackInfo.title;
+
+  // Mostra il player
+  document.getElementById("player").classList.remove("d-none");
+}
+
+// Funzione per avviare il contatore della barra di progresso
+function startCounter() {
+  stopCounter(); // Azzera e ferma il contatore esistente
+  countsecond = 0;
+  counter = setInterval(updateProgressBar, 1000);
+  updateProgressBar();
+}
+
+// Funzione per aggiornare la barra di progresso
+function updateProgressBar() {
+  const progressBar = document.getElementById("bar");
+  progressBar.style.width = countsecond + "%";
+  countsecond += 3;
+  if (countsecond > 95) {
+    stopCounter();
+  }
+}
+
+// Funzione per fermare il contatore della barra di progresso
+function stopCounter() {
+  clearInterval(counter);
+  countsecond = 0;
+  document.getElementById("bar").style.width = countsecond + "%";
+}
+
+// Event listener per il pulsante di pausa
+document.getElementById("pause-player").addEventListener("click", () => {
+  if (!audioPlayer.paused) {
+    audioPlayer.pause();
+    stopCounter();
+  } else {
+    audioPlayer.play();
+    startCounter();
+  }
+});
+
+// Event listener per il controllo del volume
+document
+  .getElementById("volume-slider")
+  .addEventListener("input", function (e) {
+    audioPlayer.volume = e.currentTarget.value / 100;
+  });
+
+// Funzione per aggiornare l'interfaccia utente del player
+function updatePlayerUI(trackInfo) {
+  const playerImg = document.getElementById("player-img");
+  const titleSong = document.getElementById("title-song");
+  playerImg.src = trackInfo.album.cover;
+  titleSong.textContent = trackInfo.title;
+
+  // Mostra il player
+  document.getElementById("player").classList.remove("d-none");
+}
 
 //FETCH:
 // Funzione per effettuare la chiamata API e ottenere i dati dell'album
@@ -93,21 +167,21 @@ const uptadeSongList = function (tracce) {
       "justify-content-between"
     );
     songDiv.innerHTML = `
-    <div class="col"><span class="me-1">${i}</span>${track.title}
-    <div class="song-artist">${track.artist.name}</div></div>
-    <div class="col text-center hide-on-mobile">${applicaSeparatore2(
-      track.rank
-    )}</div>
-    <div class="col text-end hide-on-mobile">
-      <p>${timing(track.duration)}</p>
-    </div>
-    <div class="col-auto d-block d-md-none">
-        <i class="bi bi-three-dots-vertical"></i>
+      <div class="col"><span class="me-1">${i}</span>${track.title}
+      <div class="song-artist">${track.artist.name}</div></div>
+      <div class="col text-center hide-on-mobile" style="color: gray;">${applicaSeparatore2(
+        track.rank
+      )}</div>
+      <div class="col text-end hide-on-mobile" style="color: gray;">
+        <p>${timing(track.duration)}</p>
       </div>
-    `;
+      <div class="col-auto d-block d-md-none">
+          <i class="bi bi-three-dots-vertical"></i>
+        </div>
+      `;
     //////
     songDiv.addEventListener("click", () => {
-      playTrack(track.preview, songDiv);
+      playTrack(track.preview, songDiv, track);
     });
     //////
     i++;
