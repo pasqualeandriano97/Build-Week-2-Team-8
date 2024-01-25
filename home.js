@@ -26,12 +26,7 @@ search.addEventListener("click", (e) => {
   e.preventDefault();
   dNone();
 });
-let audio;
-const playMusic = (url) => {
-  audio = new Audio(url);
-  audio.pause();
-  audio.play();
-};
+
 console.log(audio);
 
 const card = document.querySelectorAll(".nascosto");
