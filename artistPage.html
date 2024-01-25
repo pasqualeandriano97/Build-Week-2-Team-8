@@ -131,7 +131,7 @@
                   <h1 id="artista" class="fw-bolder text-light"></h1>
                 </div>
                 <div class="col d-lg-flex d-sm-none align-items-end ms-3">
-                  <span id="visual" class="fs-6"></span>
+                  <span id="visual" class="fs-6 text-light"></span>
                 </div>
               </div>
             </div>
@@ -299,8 +299,6 @@
                     <div class="col-3 px-0">
                       <p class="fw-lighter text-end">2 min</p>
                     </div>
-
-                    <button id="pause">pausa</button>
                   </div>
                 </div>
               </div>
@@ -308,28 +306,95 @@
           </nav>
         </div>
       </div>
+
       <div
-        class="row fixed-bottom d-lg-none justify-content-around bg-black bg-gradient bg-opacity-50"
+        id="player"
+        class="d-none row h-100 align-items-center px-0 bg-dark justify-content-between sticky-bottom"
       >
-        <div class="col-3">
-          <a class="nav-link text-light fw-bold text-center" href="#">
-            <i class="bi bi-house-fill text-light me-2 ms-2 d-block big"></i>
-            Home
-          </a>
+        <div id="now-song" class="col-3 d-flex align-items-center">
+          <img
+            id="player-img"
+            src="./assets/imgs/main/image-1.jpg"
+            alt=""
+            class="mt-3 me-3"
+            height="100"
+            width="100"
+          />
+          <div>
+            <p id="title-song" class="mb-1 text-light"></p>
+            <span class="mt-1 text-light">Queen</span>
+          </div>
         </div>
-        <div class="col-3">
-          <a class="nav-link text-light text-center" href="#">
-            <i class="bi bi-search text-light me-2 ms-2 d-block big"></i> Cerca
-          </a>
-        </div>
-        <div class="col-3">
-          <a class="nav-link text-light text-center" href="#">
+        <div class="col-4 d-flex flex-column mb-3 justify-content-center">
+          <div class="text-center mb-3">
+            <i class="bi bi-shuffle text-light fs-3 me-2"></i>
+            <i class="bi bi-skip-start-fill text-light fs-3 me-2"></i>
             <i
-              class="bi bi-music-note-list text-light text-light ms-2 me-2 d-block big"
+              class="bi bi-play-circle-fill text-light fs-3 me-2"
+              id="pause-player"
             ></i>
-            La tua libreria
-          </a>
+            <i class="bi bi-skip-end-fill text-light fs-3 me-2"></i>
+          </div>
+
+          <div
+            class="progress bg-secondary"
+            role="progressbar"
+            aria-label="Example 1px high"
+            aria-valuenow="30"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            style="height: 3px"
+          >
+            <div
+              id="bar"
+              class="progress-bar bg-light"
+              style="width: 60%"
+            ></div>
+          </div>
         </div>
+        <div class="col-3 d-flex justify-content-center align-items-end">
+          <div class="me-2">
+            <i class="bi bi-mic text-light"></i>
+            <i class="bi bi-list text-light"></i>
+            <i class="bi bi-speaker text-light"></i>
+            <i class="bi bi-volume-up-fill text-light"></i>
+          </div>
+          <div style="position: relative; width: fit-content; height: 30px">
+            <input
+              id="volume-slider"
+              class="custom-input"
+              type="range"
+              min="0"
+              max="100"
+              step="any"
+              value="100"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="row fixed-bottom d-lg-none justify-content-around bg-black bg-gradient bg-opacity-50"
+    >
+      <div class="col-3">
+        <a class="nav-link text-light fw-bold text-center" href="#">
+          <i class="bi bi-house-fill text-light me-2 ms-2 d-block big"></i>
+          Home
+        </a>
+      </div>
+      <div class="col-3">
+        <a class="nav-link text-light text-center" href="#">
+          <i class="bi bi-search text-light me-2 ms-2 d-block big"></i> Cerca
+        </a>
+      </div>
+      <div class="col-3">
+        <a class="nav-link text-light text-center" href="#">
+          <i
+            class="bi bi-music-note-list text-light text-light ms-2 me-2 d-block big"
+          ></i>
+          La tua libreria
+        </a>
       </div>
     </div>
 

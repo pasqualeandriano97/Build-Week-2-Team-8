@@ -4,6 +4,8 @@ const visual = document.getElementById('visual')
 const visual2 = document.getElementById('visual2')
 const lista = document.getElementById('lista')
 
+const canzoni = []
+
 function applicaSeparatore(importoNumerico) {
   var importo = importoNumerico.toString()
   if (importo.length > 3) {
@@ -32,6 +34,8 @@ function applicaSeparatore2(importoNumerico) {
   }
   return importo
 }
+
+const fullPlayer = function (data) {}
 
 function timing(duration) {
   const slots = []
@@ -72,9 +76,11 @@ fetch(artistUrl)
       })
       .then((dati) => {
         console.log('dati', dati)
-
+        fullPlayer(dati)
         let i = 1
         dati.data.forEach((element) => {
+          console.log(element)
+          canzoni.push(element)
           const li = document.createElement('li')
           li.classList.add(
             'row',
@@ -87,17 +93,17 @@ fetch(artistUrl)
             'mb-sm-2'
           )
           li.innerHTML = `
-          <div id="song" onclick="playAudio('${
+          <div id="song" onclick="playAudio(event,'${
             element.preview
           }')" class=" col-8 p-0">
-            <span class="me-1 fs-6 text-light">${i}</span>
+            <span class="me-2 fs-6 text-light">${i}</span>
             <img
               src="${element.album.cover_small}"
               width="60"
               height="60"
               alt=""
             />
-            <span class=" text-crop fs-6 text-light d-inline-block text-truncate" style="max-width: 200px !important;">${
+            <span class=" text-crop fs-6 text-light d-inline-block text-truncate ms-2" style="max-width: 200px !important;">${
               element.album.title
             }</span>
           </div>
@@ -107,10 +113,12 @@ fetch(artistUrl)
           <span class="col-2 p-0 text-secondary fs-6">${timing(
             element.duration
           )}</span>
+          
         `
           i++
           lista.appendChild(li)
         })
+        console.log(canzoni)
       })
   })
   .catch((response) => {
@@ -125,20 +133,49 @@ document
       .classList.toggle('text-play')
     document.getElementsByClassName('bi-dot')[0].classList.toggle('d-none')
   })
-
+let countsecond = 0
 let player
 let urlPlayer
-
-function playAudio(url) {
+let counter
+function playAudio(e, url) {
   player = new Audio(url)
   player.play()
-}
+  counter = setInterval(contatore, 1000)
+  contatore()
+  document.getElementById('player').classList.toggle('d-none')
+  let volume = document.getElementById('volume-slider')
+  volume.addEventListener('input', function (e) {
+    player.volume = e.currentTarget.value / 100
+  })
 
+  const div = e.target.closest('#song')
+
+  document.getElementById('now-song').innerHTML = div.innerHTML
+}
 function stop() {
+  document.getElementById('player').classList.toggle('d-none')
   player.pause()
   player.currentTime = 0
+  stopcounter()
 }
 
-document.getElementById('pause').addEventListener('click', function () {
+document.getElementById('pause-player').addEventListener('click', function (e) {
+  console.log(e.target)
   stop()
 })
+
+function stopcounter() {
+  clearInterval(counter)
+  countsecond = 0
+  document.getElementById('bar').style.width = countsecond + '%'
+}
+
+function contatore() {
+  document.getElementById('bar').style.width = countsecond + '%'
+  countsecond = countsecond + 3
+  console.log(countsecond)
+  if (countsecond > 95) {
+    countsecond = 0
+    stopcounter()
+  }
+}
