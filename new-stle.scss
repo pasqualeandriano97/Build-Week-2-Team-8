@@ -1,13 +1,13 @@
-@import "scss/functions";
-@import "scss/variables";
+@import 'scss/functions';
+@import 'scss/variables';
 
 $new-theme-colors: (
-  "play": rgb(30, 215, 96),
-  "col-back": rgb(44, 44, 44),
-  "artis-ver": rgb(61, 145, 244),
-  "player-background": rgb(34, 204, 98),
-  "green-dark": rgb(0, 69, 55),
-  "back-side": #000000,
+  'play': rgb(30, 215, 96),
+  'col-back': rgb(44, 44, 44),
+  'artis-ver': rgb(61, 145, 244),
+  'player-background': rgb(34, 204, 98),
+  'green-dark': rgb(0, 69, 55),
+
 );
 
 $theme-colors: map-merge($theme-colors, $new-theme-colors);
@@ -15,11 +15,14 @@ $theme-colors: map-merge($theme-colors, $new-theme-colors);
 $new-position-values: (
   0: 0,
   5: 5%,
-  10: 15%,
+  9: 9%,
+  10:15%,
+  28: 28%,
   50: 50%,
-  100: 100%,
+  100: 100%
 );
 
 $position-values: map-merge($position-values, $new-position-values);
 
-@import "scss/bootstrap.scss";
+
+@import 'scss/bootstrap.scss';
