@@ -1,0 +1,138 @@
+/* /Cards page serch */
+.gradient {
+  background: rgb(64, 37, 167);
+  background: -moz-linear-gradient(
+    141deg,
+    rgba(64, 37, 167, 1) 50%,
+    rgba(255, 255, 255, 1) 100%
+  );
+  background: -webkit-linear-gradient(
+    141deg,
+    rgba(64, 37, 167, 1) 50%,
+    rgba(255, 255, 255, 1) 100%
+  );
+  background: linear-gradient(
+    141deg,
+    rgba(64, 37, 167, 1) 50%,
+    rgba(255, 255, 255, 1) 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#4025a7",endColorstr="#ffffff",GradientType=1);
+}
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #222;
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.ciao {
+  font-size: 0.75rem !important;
+}
+
+.carte {
+  background-color: #2c2c2c !important;
+}
+
+.carte2 {
+  background-color: #181818 !important;
+}
+.podcast {
+  background-color: rgb(225, 51, 0);
+  color: white;
+}
+
+.creato {
+  background-color: rgb(30, 50, 100);
+  color: white;
+}
+.nuove {
+  background-color: rgb(232, 18, 92);
+  color: white;
+}
+.pop {
+  background-color: rgb(21, 138, 8);
+  color: white;
+}
+
+.hiphop {
+  background-color: rgb(188, 88, 0);
+  color: white;
+}
+.dance {
+  background-color: rgb(216, 64, 0);
+  color: white;
+}
+.latina {
+  background-color: rgb(225, 17, 139);
+  color: white;
+}
+.classifica {
+  background-color: white;
+  color: black;
+}
+.form {
+  background-color: rgb(27, 27, 27);
+  color: white;
+}
+.card {
+  position: relative;
+}
+
+.imgcard2 {
+  position: relative;
+  width: 20rem;
+  height: 10rem;
+  overflow: hidden;
+}
+
+.imgcard2 .imgcard2-img-top {
+  position: absolute;
+  bottom: 0;
+  right: -40px;
+  width: 50%;
+  height: 80%;
+  object-fit: cover;
+  transform: rotate(35deg);
+  border-radius: 10%;
+}
+
+.card-img-top {
+  position: absolute;
+  bottom: 20px;
+  right: 45px;
+  width: 20px;
+  height: 700px;
+}
+
+@media (max-width: 768px) {
+  .card {
+    height: 100%;
+  }
+
+  .imgcard2 {
+    width: 100%;
+  }
+
+  .imgcard2 .imgcard2-img-top {
+    position: absolute;
+    bottom: -30px;
+    right: -30px;
+    width: 50%;
+    height: 80%;
+    object-fit: cover;
+    transform: rotate(35deg);
+    border-radius: 10%;
+  }
+
+  .card-img-top {
+    position: static;
+    width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+  }
+}
+.contenitore {
+  height: 100%;
+}
