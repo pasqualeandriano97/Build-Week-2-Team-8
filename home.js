@@ -32,12 +32,6 @@ const playMusic = (url) => {
   audio.play();
 };
 
-// const playMusics = (url) => {
-//   let audio = new Audio(url);
-//   console.log(url);
-//   audio.play();
-// };
-
 const card = document.querySelectorAll(".nascosto");
 
 const deleteCard = () => {
@@ -56,11 +50,6 @@ const artist = (text) => {
 
 const artistSpan = (text) => {
   artist2.innerText = text;
-};
-
-const navigazioneInalbumPage = function (id) {
-  let parametro = id;
-  window.location.href = "./albumPage.html" + "?singleAlbum=" + parametro;
 };
 
 const ciao = [];
@@ -132,7 +121,7 @@ const searchData = (event) => {
       let src = response.data[0].album.cover_big;
       image1.src = src;
       album = response.data[0].album.id;
-      zero++;
+
       deleteCard();
       dNone();
       console.log(response.data[0].preview);
@@ -165,28 +154,7 @@ const debounce = (callback, waitTime) => {
 const debounceHandler = debounce(searchData, 1000);
 formInput.addEventListener("input", debounceHandler);
 
-// fetch(" https://striveschool-api.herokuapp.com/api/deezer/search?q=" + "salmo")
-//   .then((res) => {
-//     return res.json();
-//   })
-//   .then((response) => {
-//     title(response.data[0].title);
-//     artist(response.data[0].artist.name);
-//     artistSpan(response.data[0].artist.name);
-//     toArtistPage.href =
-//       "./artistPage.html" + "?artistId=" + response.data[0].artist.id;
-//     let src = response.data[0].album.cover_big;
-//     image1.src = src;
-//     album = response.data[0].album.id;
-
-//     deleteCard();
-//     playerButton.addEventListener("click", () => {
-//       footer.classList.remove("d-lg-none");
-//       playMusics(response.data[0].preview);
-//     });
-//     createCard(response.data);
-//     countCols();
-//   })
-//   .catch((error) => {
-//     alert(error + "si è verificato un errore");
-//   });
+const navigazioneInalbumPage = function (id) {
+  let parametro = id;
+  window.location.href = "./albumPage.html" + "?singleAlbum=" + parametro;
+};
