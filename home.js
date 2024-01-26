@@ -9,10 +9,20 @@ const artist2 = document.getElementById("artist2");
 const row1 = document.getElementById("row1");
 const dNone1 = document.getElementById("d-none");
 const toArtistPage = document.getElementById("toArtistPage");
+const playerButton = document.getElementById("playerButton");
+const footer = document.getElementById("player");
 let album = "";
+const audioM = document.getElementById("audioM");
 
+let temp = "x";
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+});
 const dNone = () => {
   searchBar.classList.toggle("d-none");
+};
+const dnoneF = () => {
+  footer.classList.remove("d-none");
 };
 search.addEventListener("click", (e) => {
   e.preventDefault();
@@ -20,6 +30,7 @@ search.addEventListener("click", (e) => {
 });
 
 const card = document.querySelectorAll(".nascosto");
+
 const deleteCard = () => {
   card.forEach((card) => {
     card.classList.add("d-none");
@@ -38,21 +49,28 @@ const artistSpan = (text) => {
   artist2.innerText = text;
 };
 
-const navigazioneInalbumPage = function (id) {
-  let parametro = id;
-  window.location.href = "./albumPage.html" + "?singleAlbum=" + parametro;
+const ciao = [];
+const compileFooter = (data) => {
+  const img = document.getElementById("player-img");
+  const title = document.getElementById("title-song");
+  const artist = document.getElementById("artist-player");
+  img.src = data[0].album.cover;
+  title.innerText = data[0].album.title;
+  artist.innerText = data[0].artist.name;
 };
-
 const createCard = (data) => {
-  console.log(data[0].album.title);
+  for (let i = 1; i < data.length; i++) {
+    ciao.push(data[i].album.title);
 
-  for (let i = 1; i < 7; i++) {
-    const col = document.createElement("div");
-    col.classList.add("col-6", "m-0");
+    if (ciao[i] != temp) {
+      temp = data[i].album.title;
 
-    col.innerHTML = `<a class="text-decoration-none" href="${
-      "./albumPage.html" + "?singleAlbum=" + data[i].id
-    }"><div class="card bg-dark text-white carte my-2">
+      const col = document.createElement("div");
+      col.classList.add("col", "m-0", "carte", "bg-dark", "p-1");
+
+      col.innerHTML = `<a class="text-decoration-none " href="${
+        "./albumPage.html" + "?singleAlbum=" + data[i].album.id
+      }"><div class="card bg-dark text-white  p-0">
   <div class="card-body d-flex p-0">
     <img
       src="${data[i].album.cover}"
@@ -65,72 +83,142 @@ const createCard = (data) => {
     </div>
   </div>
 </div></a>`;
-    row1.appendChild(col);
+      row1.appendChild(col);
+      if (ciao.length >= 30) {
+        ciao.splice(0, ciao.length);
+      }
+    } else {
+      console.log("Non ho ripetuto");
+    }
   }
 };
+
 const countCols = () => {
   let cols = document.querySelectorAll(".carte");
-  console.log(cols.length);
 
-  if (cols.length >= 12) {
+  if (cols.length > 6) {
     for (let i = 0; i < cols.length - 6; i++) {
-      cols[i].remove();
+      cols[i].classList.add("d-none");
     }
   }
 };
 
 let params = "";
+let zero = 0;
 
-const searchData = (event) => {
-  const value = event.target.value;
-  console.log("Searching...", value);
-  fetch(" https://striveschool-api.herokuapp.com/api/deezer/search?q=" + value)
-    .then((res) => {
-      return res.json();
-    })
+let volume = document.getElementById("volume-slider");
+
+let currentSearch = 0; // Aggiunto per gestire la ricerca corrente
+
+const searchData = (event, searchId) => {
+  let value;
+  if (event) {
+    value = event.target.value;
+  } else {
+    value = "drake";
+  }
+
+  const currentSearchId = ++currentSearch;
+
+  fetch("https://striveschool-api.herokuapp.com/api/deezer/search?q=" + value)
+    .then((res) => res.json())
     .then((response) => {
-      console.log(response);
-      title(response.data[0].album.title);
-      artist(response.data[0].artist.name);
-      artistSpan(response.data[0].artist.name);
-      toArtistPage.href =
-        "./artistPage.html" + "?artistId=" + response.data[0].artist.id;
-      let src = response.data[0].album.cover_big;
-      image1.src = src;
-      album = response.data[0].album.id;
-      albumFind();
-      deleteCard();
-      dNone();
-      createCard(response.data);
-      countCols();
+      // Check if this is the most recent search
+      if (currentSearchId === searchId) {
+        title(response.data[0].album.title);
+        artist(response.data[0].artist.name);
+        artistSpan(response.data[0].artist.name);
+        toArtistPage.href =
+          "./artistPage.html" + "?artistId=" + response.data[0].artist.id;
+        let src = response.data[0].album.cover_big;
+        image1.src = src;
+        album = response.data[0].album.id;
+
+        deleteCard();
+        dNone();
+        console.log(response.data[0].preview);
+        compileFooter(response.data);
+        audioM.src = response.data[0].preview;
+        playerButton.addEventListener("click", (e) => {
+          playAudio(e);
+          dnoneF();
+        });
+
+        createCard(response.data);
+
+        countCols();
+      }
     })
-    .catch((e) => {});
+    .catch((error) => {
+      alert(error + "si Ã¨ verificato un errore");
+    });
 };
 
 const debounce = (callback, waitTime) => {
   let timer;
+  let searchId = 0;
 
   return (...args) => {
+    const currentId = ++searchId;
+
     clearTimeout(timer);
     timer = setTimeout(() => {
-      callback(...args);
+      callback(...args, currentId);
     }, waitTime);
   };
 };
 
+searchData();
 const debounceHandler = debounce(searchData, 1000);
 formInput.addEventListener("input", debounceHandler);
 
-console.log(image1);
-const albumFind = () => {
-  fetch("https://striveschool-api.herokuapp.com/api/deezer/album/" + album)
-    .then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-    })
+let countsecond = 0;
+let player;
+let urlPlayer;
+let counter;
+function playAudio(e) {
+  audioM.play();
 
-    .then((response) => {
-      console.log(response);
-    });
+  counter = setInterval(contatore, 1000);
+  contatore();
+  document.getElementById("player").classList.toggle("d-none");
+  let volume = document.getElementById("volume-slider");
+  volume.addEventListener("input", function (e) {
+    audioM.volume = e.currentTarget.value / 100;
+  });
+}
+function stopcounter() {
+  clearInterval(counter);
+
+  countsecond = 0;
+
+  document.getElementById("bar").style.width = countsecond + "%";
+}
+
+function stop() {
+  document.getElementById("player").classList.toggle("d-none");
+  audioM.pause();
+  audioM.currentTime = 0;
+  stopcounter();
+}
+
+document.querySelector("#pause-player").addEventListener("click", function (e) {
+  console.log(e.target);
+  stop();
+  stopcounter();
+});
+
+function contatore() {
+  document.getElementById("bar").style.width = countsecond + "%";
+  countsecond = countsecond + 3;
+  console.log(countsecond);
+  if (countsecond > 95) {
+    countsecond = 0;
+    stopcounter();
+  }
+}
+
+const navigazioneInalbumPage = function (id) {
+  let parametro = id;
+  window.location.href = "./albumPage.html" + "?singleAlbum=" + parametro;
 };
