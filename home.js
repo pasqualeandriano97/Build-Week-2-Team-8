@@ -231,3 +231,36 @@ const navigazioneInalbumPage = function (id) {
   let parametro = id;
   window.location.href = "./albumPage.html" + "?singleAlbum=" + parametro;
 };
+
+const profile1 = document.getElementById("1");
+const profile2 = document.getElementById("2");
+const profile3 = document.getElementById("3");
+const profile4 = document.getElementById("4");
+const simone = document.getElementById("simone");
+const gioele = document.getElementById("gioele");
+const pasquale = document.getElementById("pasquale");
+const jurgen = document.getElementById("pasquale");
+
+profile1.addEventListener("click", function () {
+  cambia(profile1.innerText);
+});
+profile2.addEventListener("click", function () {
+  cambia(profile2.innerText);
+});
+profile3.addEventListener("click", function () {
+  cambia(profile3.innerText);
+});
+profile4.addEventListener("click", function () {
+  cambia(profile4.innerText);
+});
+
+const cambia = function (nome) {
+  const valore = document.getElementById("profilo");
+  valore.innerText = nome;
+};
+
+const simoneshow = () => {
+  gioele.classList.toggle("d-none");
+  pasquale.classList.toggle("d-none");
+  jurgen.classList.toggle("d-none");
+};
