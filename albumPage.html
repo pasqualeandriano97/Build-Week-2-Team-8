@@ -38,7 +38,7 @@
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link text-light" href="#">
+                  <a class="nav-link text-light" href="./cerca.html">
                     <i class="bi bi-search text-light me-2 ms-2"></i> Cerca
                   </a>
                 </li>
@@ -81,7 +81,7 @@
           </nav>
           <hr class="text-light" />
         </div>
-        <div class="col-7">
+        <div id="color" class="col-7">
           <!-- Pulsanti con le frecce -->
           <div class="d-flex justify-content-start align-items-center mt-3">
             <div class="bg-dark text-white rounded-circle px-1 mx-3">
@@ -286,7 +286,7 @@
           <i class="bi bi-shuffle text-light fs-3 me-2"></i>
           <i class="bi bi-skip-start-fill text-light fs-3 me-2"></i>
           <i
-            class="bi bi-play-circle-fill text-light fs-3 me-2"
+            class="bi bi-play-circle-fill text-light fs-3 me-2 nope"
             id="pause-player"
           ></i>
           <i class="bi bi-skip-end-fill text-light fs-3 me-2"></i>
@@ -326,18 +326,21 @@
     </div>
 
     <!---->
-    <div class="container">
+    <div id="bottomNav" class="container">
       <div
         class="row fixed-bottom d-lg-none justify-content-around bg-black bg-gradient bg-opacity-50"
       >
         <div class="col-3">
-          <a class="nav-link text-light fw-bold text-center" href="#">
+          <a
+            class="nav-link text-light fw-bold text-center"
+            href="./homePage.html"
+          >
             <i class="bi bi-house-fill text-light me-2 ms-2 d-block big"></i>
             Home
           </a>
         </div>
         <div class="col-3">
-          <a class="nav-link text-light text-center" href="#">
+          <a class="nav-link text-light text-center" href="./cerca.html">
             <i class="bi bi-search text-light me-2 ms-2 d-block big"></i> Cerca
           </a>
         </div>
@@ -356,6 +359,12 @@
       integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
       crossorigin="anonymous"
     ></script>
+    <!-- <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/canvasjs/1.7.0/canvasjs.min.js"
+      integrity="sha512-FJ2OYvUIXUqCcPf1stu+oTBlhn54W0UisZB/TNrZaVMHHhYvLBV9jMbvJYtvDe5x/WVaoXZ6KB+Uqe5hT2vlyA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script> -->
     <script src="./album.js"></script>
   </body>
 </html>

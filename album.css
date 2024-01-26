@@ -1,6 +1,6 @@
 body {
   background-color: #121212;
-  color: #fff;
+  color: #fff; 
 }
 main {
   margin: 0 !important;
@@ -10,6 +10,10 @@ main {
 h5 {
   font-size: 0.7rem;
   font-weight: bolder;
+}
+
+.bg-dark {
+  background-color: #000000 !important; /* colore di Pasquale */
 }
 
 /**/
@@ -215,11 +219,17 @@ color: #1db954 !important;
   margin-bottom: 20px
 }
 
+.nope {
+  color: white !important;
+  font-size: 2rem !important;
+}
+
 .playing {
   color: #1db954;
 }
 
 #player {
+  background-color:#212529 !important;
   height: 120px !important
 }
 
