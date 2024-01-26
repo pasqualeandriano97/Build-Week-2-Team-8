@@ -119,6 +119,10 @@ cursor: pointer !important;
 color: #1db954 !important; 
 }
 
+.shuffle-active {
+  color: #1db954 !important; /* Colore verde per lo shuffle attivo */
+}
+
 /* vertical dots */
 .bi-three-dots-vertical {
 cursor: pointer;
@@ -217,6 +221,10 @@ color: #1db954 !important;
 
 #player {
   height: 120px !important
+}
+
+#artist-name {
+  color: gray !important;
 }
 
 @media (max-width: 576px) {
@@ -369,38 +377,38 @@ color: #1db954 !important;
   }
 
   #player {
-    height: 80px; /* Ridimensiona l'altezza */
-    padding: 10px; /* Aggiungi un po' di spazio interno */
+    height: 80px; 
+    padding: 10px; 
   }
 
   #player #now-song {
-    flex: 0 0 20%; /* Riduci la larghezza e mantieni la dimensione */
+    flex: 0 0 20%; 
     display: flex;
     align-items: center;
     justify-content: center;
   }
 
   #player-img {
-    width: 50px; /* Riduci la dimensione dell'immagine */
+    width: 50px; 
     height: 50px;
     margin-right: 5px;
   }
 
   #title-song, #player .text-light {
-    display: none; /* Nascondi i testi per risparmiare spazio */
+    display: none; 
   }
 
   #player .col-4, #player .col-3 {
-    flex: 0 0 40%; /* Modifica la larghezza delle colonne */
+    flex: 0 0 40%; 
     justify-content: center;
   }
 
   #player .bi {
-    font-size: 1.5rem; /* Riduci la dimensione delle icone */
+    font-size: 1.5rem; 
   }
 
   #volume-slider {
-    width: 100px; /* Riduci la lunghezza dello slider del volume */
+    width: 100px; 
   }
 
 }
@@ -408,20 +416,33 @@ color: #1db954 !important;
 
 
 @media (min-width: 577px) and (max-width: 768px) {
+  
+
+  
   .album-details .row,
   .album-info {
       flex-direction: column;
       margin: 10px 0;
+      text-align: left; /**/
   }
 
   nav.sidebar,
   .right-sidebar {
     display: none;
   }
+
+  .container-fluid, .row, .col-7 {
+    width: 100%;
+    max-width: 100%;
+    padding: 0;
+    margin-left: 99px;
+  }
+
   #album-image {
       margin: 0 auto;
       width: 60%;
-      margin-left: 85px;
+      margin-left: 95px;
+      margin-bottom:15px;
   }
 
   .album-info {
@@ -476,41 +497,41 @@ color: #1db954 !important;
       }
      
       #player {
-        height: 100px; /* Adeguata altezza del player */
-        padding: 10px; /* Spazio interno per separare gli elementi */
+        height: 100px; 
+        padding: 10px; 
       }
     
       #player #now-song {
-        flex: 0 0 25%; /* Ridimensiona la larghezza dell'immagine e del testo */
+        flex: 0 0 25%; 
         display: flex;
         align-items: center;
         justify-content: flex-start;
       }
     
       #player-img {
-        width: 60px; /* Ridimensiona l'immagine */
+        width: 60px; 
         height: 60px;
         margin-right: 10px;
       }
     
       #title-song, #player .text-light {
-        font-size: 0.9rem; /* Ridimensiona il testo per una migliore leggibilità */
-        white-space: nowrap; /* Evita interruzioni di riga */
-        overflow: hidden; /* Nasconde il testo in eccesso */
-        text-overflow: ellipsis; /* Aggiunge puntini di sospensione se il testo è troppo lungo */
+        font-size: 0.9rem; 
+        white-space: nowrap; 
+        overflow: hidden; 
+        text-overflow: ellipsis; 
       }
     
       #player .col-4, #player .col-3 {
-        flex: 0 0 37.5%; /* Adegua la larghezza delle colonne dei controlli e del volume */
+        flex: 0 0 37.5%; 
         justify-content: center;
       }
     
       #player .bi {
-        font-size: 2rem; /* Dimensione adeguata delle icone */
+        font-size: 2rem; 
       }
     
       #volume-slider {
-        width: 120px; /* Lunghezza adeguata dello slider del volume */
+        width: 120px; 
       }
 
   }

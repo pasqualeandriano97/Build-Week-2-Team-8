@@ -44,6 +44,7 @@ const playTrack = (previewUrl, songElement, trackInfo) => {
 function updatePlayerUI(trackInfo) {
   const playerImg = document.getElementById("player-img");
   const titleSong = document.getElementById("title-song");
+
   playerImg.src = trackInfo.album.cover;
   titleSong.textContent = trackInfo.title;
 
@@ -98,8 +99,11 @@ document
 function updatePlayerUI(trackInfo) {
   const playerImg = document.getElementById("player-img");
   const titleSong = document.getElementById("title-song");
+  const artistName = document.getElementById("artist-name");
+
   playerImg.src = trackInfo.album.cover;
   titleSong.textContent = trackInfo.title;
+  artistName.textContent = trackInfo.artist.name; //
 
   // Mostra il player
   document.getElementById("player").classList.remove("d-none");
@@ -261,3 +265,12 @@ fetchAlbumData(albumId)
   .catch(function (error) {
     console.error("Errore nel recupero dei dati dell'album:", error);
   });
+
+// Aggiunta del codice per la funzionalità dello shuffle
+const shuffleIcon = document.querySelector(".bi-shuffle");
+
+if (shuffleIcon) {
+  shuffleIcon.addEventListener("click", function () {
+    this.classList.toggle("shuffle-active");
+  });
+}
