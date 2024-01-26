@@ -122,19 +122,39 @@
                   </div>
                 </div>
                 <div class="me-3">
-                  <button
-                    class="dropdown-toggle btn-outline-secondary btn rounded-pill bg-dark opacity-75 p-1"
-                  >
-                    <div class="p-0 d-inline">
-                      <img
-                        src="./assets/imgs/main/image-10.jpg"
-                        alt=""
-                        width="20"
-                        class="rounded-circle"
-                      />
-                    </div>
-                    <span>Profilo privato</span>
-                  </button>
+                  <div class="me-3 dropdown">
+                    <button
+                      class="dropdown-toggle btn-outline-secondary btn rounded-pill bg-dark opacity-75 p-1"
+                      type="button"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
+                    >
+                      <div class="p-0 d-inline">
+                        <img
+                          src="./assets/imgs/main/image-10.jpg"
+                          alt=""
+                          width="20"
+                          class="rounded-circle"
+                        />
+                      </div>
+
+                      <span id="profilo">seleziona profilo</span>
+                    </button>
+                    <ul class="dropdown-menu">
+                      <li>
+                        <a id="1" class="dropdown-item" href="#">Simone</a>
+                      </li>
+                      <li>
+                        <a id="2" class="dropdown-item" href="#">Gioele</a>
+                      </li>
+                      <li>
+                        <a id="3" class="dropdown-item" href="#">Pasquale</a>
+                      </li>
+                      <li>
+                        <a id="4" class="dropdown-item" href="#">Jurgen</a>
+                      </li>
+                    </ul>
+                  </div>
                 </div>
               </div>
             </div>
@@ -448,7 +468,7 @@
           </div>
           <!-- Navbar laterale:dx -->
           <div class="col-2 d-none d-lg-block bg-back-side">
-            <nav class="d-none d-lg-block bg-back-side sidebar w-100">
+            <nav class="col-md-2 d-none d-md-block bg-back-side sidebar w-100">
               <div
                 class="p-2 d-flex justify-content-between align-items-center"
               >
@@ -460,71 +480,79 @@
                   <i class="bi bi-x text-light"></i>
                 </div>
               </div>
-              <div class="container bg-back-side">
+              <div class="container">
                 <div class="row flex-column">
                   <div class="col text-light">
                     <div class="row p-2">
                       <div class="col-2 px-0">
                         <img
-                          src="./assets/imgs/main/image-1.jpg"
+                          src="./assets/imgs/main/image-12.jpg"
                           class="rounded-circle"
                           alt=""
                           width="40"
                         />
                       </div>
-                      <div class="col-7 px-0">
-                        <p class="my-0 text-center ciao">Carlie Hookham</p>
-                        <p class="my-0 fw-lighter text-center ciao">
-                          In Camera • Yumi
-                        </p>
-                        <p class="my-0 fw-lighter text-center ciao">album</p>
+                      <div class="col-7 px-0" id="simone">
+                        <span class="my-0">Simone</span>
+                        <p class="my-0 fw-lighter">ha messo mi piace</p>
+                        <p class="my-0 fw-lighter">Salmo</p>
                       </div>
                       <div class="col-3 px-0">
-                        <p class="fw-lighter text-end">2 min</p>
+                        <p class="fw-lighter text-end">6 min</p>
                       </div>
                     </div>
-                  </div>
-                  <div class="col text-light">
                     <div class="row p-2">
                       <div class="col-2 px-0">
                         <img
-                          src="./assets/imgs/main/image-1.jpg"
+                          src="./assets/imgs/main/image-13.jpg"
                           class="rounded-circle"
                           alt=""
                           width="40"
                         />
                       </div>
-                      <div class="col-7 px-0">
-                        <p class="my-0 text-center ciao">Carlie Hookham</p>
-                        <p class="my-0 fw-lighter text-center ciao">
-                          In Camera • Yumi
-                        </p>
-                        <p class="my-0 fw-lighter text-center ciao">album</p>
+                      <div class="col-7 px-0" id="gioele">
+                        <span class="my-0">Gioele</span>
+                        <p class="my-0 fw-lighter">ha messo mi piace</p>
+                        <p class="my-0 fw-lighter">AC/DC</p>
                       </div>
                       <div class="col-3 px-0">
-                        <p class="fw-lighter text-end">2 min</p>
+                        <p class="fw-lighter text-end">4 min</p>
                       </div>
                     </div>
-                  </div>
-                  <div class="col text-light">
                     <div class="row p-2">
                       <div class="col-2 px-0">
                         <img
-                          src="./assets/imgs/main/image-1.jpg"
+                          src="./assets/imgs/main/image-14.jpg"
                           class="rounded-circle"
                           alt=""
                           width="40"
                         />
                       </div>
-                      <div class="col-7 px-0">
-                        <p class="my-0 text-center ciao">Carlie Hookham</p>
-                        <p class="my-0 fw-lighter text-center ciao">
-                          In Camera • Yumi
-                        </p>
-                        <p class="my-0 fw-lighter text-center ciao">album</p>
+                      <div class="col-7 px-0" id="pasquale">
+                        <span class="my-0">Pasquale</span>
+                        <p class="my-0 fw-lighter">ha messo mi piace</p>
+                        <p class="my-0 fw-lighter">Drake</p>
                       </div>
                       <div class="col-3 px-0">
-                        <p class="fw-lighter text-end">2 min</p>
+                        <p class="fw-lighter text-end">8 min</p>
+                      </div>
+                    </div>
+                    <div class="row p-2">
+                      <div class="col-2 px-0">
+                        <img
+                          src="./assets/imgs/main/image-15.jpg"
+                          class="rounded-circle"
+                          alt=""
+                          width="40"
+                        />
+                      </div>
+                      <div class="col-7 px-0" id="jurgen">
+                        <span class="my-0">Jurgen</span>
+                        <p class="my-0 fw-lighter">ha messo mi piace</p>
+                        <p class="my-0 fw-lighter">Guè</p>
+                      </div>
+                      <div class="col-3 px-0">
+                        <p class="fw-lighter text-end">15 min</p>
                       </div>
                     </div>
                   </div>
