@@ -7,6 +7,11 @@ main {
   padding: 0 !important;
 }
 
+.profile {
+ position: relative;
+  bottom: 14px;
+}
+
 h5 {
   font-size: 0.7rem;
   font-weight: bolder;
@@ -239,6 +244,10 @@ color: #1db954 !important;
 
 @media (max-width: 576px) {
 
+.profile {
+  display: none;
+}
+
   .container-fluid {
     padding: 0;
   }
@@ -427,7 +436,9 @@ color: #1db954 !important;
 
 @media (min-width: 577px) and (max-width: 768px) {
   
-
+  .profile {
+    display: none;
+  }
   
   .album-details .row,
   .album-info {
