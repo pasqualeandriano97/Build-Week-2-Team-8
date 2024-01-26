@@ -121,3 +121,11 @@ input[type='range']::-ms-fill-lower {
 input[type='range']::-ms-fill-upper {
   background-color: #9a905d;
 }
+
+.testo {
+  color: rgb(30, 215, 96) !important;
+}
+
+#testo:hover {
+  color: rgb(30, 215, 96) !important;
+}
