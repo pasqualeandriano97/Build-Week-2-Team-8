@@ -31,12 +31,12 @@
               </a>
               <ul class="nav flex-column">
                 <li class="nav-item text-light">
-                  <a class="nav-link text-light fw-bold" href="#">
+                  <a class="nav-link text-light fw-bold" href="homePage.html">
                     <i class="bi bi-house-fill text-light me-2 ms-2"></i> Home
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link text-light" href="#">
+                  <a class="nav-link text-light" href="cerca.html">
                     <i class="bi bi-search text-light me-2 ms-2"></i> Cerca
                   </a>
                 </li>
@@ -102,9 +102,12 @@
                       <i class="bi bi-chevron-right text-light"></i>
                     </button>
                   </div>
-                  <div class="me-3">
+                  <div class="me-3 dropdown">
                     <button
                       class="dropdown-toggle btn-outline-secondary btn rounded-pill bg-dark opacity-75 p-1"
+                      type="button"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
                     >
                       <div class="p-0 d-inline">
                         <img
@@ -115,8 +118,22 @@
                         />
                       </div>
 
-                      <span>Profilo privato</span>
+                      <span id="profilo">seleziona profilo</span>
                     </button>
+                    <ul class="dropdown-menu">
+                      <li>
+                        <a id="1" class="dropdown-item" href="#">Simone</a>
+                      </li>
+                      <li>
+                        <a id="2" class="dropdown-item" href="#">Gioele</a>
+                      </li>
+                      <li>
+                        <a id="3" class="dropdown-item" href="#">Pasquale</a>
+                      </li>
+                      <li>
+                        <a id="4" class="dropdown-item" href="#">Jurgen</a>
+                      </li>
+                    </ul>
                   </div>
                 </div>
                 <div class="col d-flex align-items-end ms-3 mt-5">
@@ -137,7 +154,7 @@
               <div
                 class="col d-sm-flex d-lg-none d-flex align-items-end ms-3 mt-3"
               >
-                <span id="visual2" class="fs-6 text-light"> ciao</span>
+                <span id="visual2" class="fs-6 text-light"></span>
               </div>
             </div>
             <div class="col d-sm-none d-lg-flex align-items-center mt-3">
@@ -243,59 +260,73 @@
                   <div class="row p-2">
                     <div class="col-2 px-0">
                       <img
-                        src="./assets/imgs/main/image-1.jpg"
+                        src="./assets/imgs/main/image-12.jpg"
                         class="rounded-circle"
                         alt=""
                         width="40"
                       />
                     </div>
                     <div class="col-7 px-0">
-                      <span class="my-0">arlie Hookham</span>
-                      <p class="my-0 fw-lighter">In Camera • Yumi</p>
-                      <p class="my-0 fw-lighter">album</p>
+                      <span class="my-0">Simone</span>
+                      <p class="my-0 fw-lighter">ha messo mi piace</p>
+                      <p class="my-0 fw-lighter">Salmo</p>
                     </div>
                     <div class="col-3 px-0">
-                      <p class="fw-lighter text-end">2 min</p>
+                      <p class="fw-lighter text-end">6 min</p>
                     </div>
                   </div>
-                </div>
-                <div class="col text-light">
                   <div class="row p-2">
                     <div class="col-2 px-0">
                       <img
-                        src="./assets/imgs/main/image-1.jpg"
+                        src="./assets/imgs/main/image-13.jpg"
                         class="rounded-circle"
                         alt=""
                         width="40"
                       />
                     </div>
                     <div class="col-7 px-0">
-                      <span class="my-0">arlie Hookham</span>
-                      <p class="my-0 fw-lighter">In Camera • Yumi</p>
-                      <p class="my-0 fw-lighter">album</p>
+                      <span class="my-0">Gioele</span>
+                      <p class="my-0 fw-lighter">ha messo mi piace</p>
+                      <p class="my-0 fw-lighter">AC/DC</p>
                     </div>
                     <div class="col-3 px-0">
-                      <p class="fw-lighter text-end">2 min</p>
+                      <p class="fw-lighter text-end">4 min</p>
                     </div>
                   </div>
-                </div>
-                <div class="col text-light">
                   <div class="row p-2">
                     <div class="col-2 px-0">
                       <img
-                        src="./assets/imgs/main/image-1.jpg"
+                        src="./assets/imgs/main/image-14.jpg"
                         class="rounded-circle"
                         alt=""
                         width="40"
                       />
                     </div>
                     <div class="col-7 px-0">
-                      <span class="my-0">arlie Hookham</span>
-                      <p class="my-0 fw-lighter">In Camera • Yumi</p>
-                      <p class="my-0 fw-lighter">album</p>
+                      <span class="my-0">Pasquale</span>
+                      <p class="my-0 fw-lighter">ha messo mi piace</p>
+                      <p class="my-0 fw-lighter">Drake</p>
                     </div>
                     <div class="col-3 px-0">
-                      <p class="fw-lighter text-end">2 min</p>
+                      <p class="fw-lighter text-end">8 min</p>
+                    </div>
+                  </div>
+                  <div class="row p-2">
+                    <div class="col-2 px-0">
+                      <img
+                        src="./assets/imgs/main/image-15.jpg"
+                        class="rounded-circle"
+                        alt=""
+                        width="40"
+                      />
+                    </div>
+                    <div class="col-7 px-0">
+                      <span class="my-0">Jurgen</span>
+                      <p class="my-0 fw-lighter">ha messo mi piace</p>
+                      <p class="my-0 fw-lighter">Guè</p>
+                    </div>
+                    <div class="col-3 px-0">
+                      <p class="fw-lighter text-end">15 min</p>
                     </div>
                   </div>
                 </div>
@@ -320,7 +351,7 @@
           />
           <div>
             <p id="title-song" class="mb-1 text-light"></p>
-            <span class="mt-1 text-light">Queen</span>
+            <span class="mt-1 text-light"></span>
           </div>
         </div>
         <div class="col-4 d-flex flex-column mb-3 justify-content-center">

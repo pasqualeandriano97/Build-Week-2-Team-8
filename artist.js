@@ -200,3 +200,26 @@ function contatore() {
     stopcounter()
   }
 }
+
+const profile1 = document.getElementById('1')
+const profile2 = document.getElementById('2')
+const profile3 = document.getElementById('3')
+const profile4 = document.getElementById('4')
+
+profile1.addEventListener('click', function () {
+  cambia(profile1.innerText)
+})
+profile2.addEventListener('click', function () {
+  cambia(profile2.innerText)
+})
+profile3.addEventListener('click', function () {
+  cambia(profile3.innerText)
+})
+profile4.addEventListener('click', function () {
+  cambia(profile4.innerText)
+})
+
+const cambia = function (nome) {
+  const valore = document.getElementById('profilo')
+  valore.innerText = nome
+}
