@@ -18,13 +18,6 @@
     />
     <link rel="stylesheet" href="./style.css" />
     <link rel="stylesheet" href="./assets/css/circular-font.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-      integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
   </head>
   <body class="bg-dark">
     <main>
@@ -96,7 +89,7 @@
             </nav>
             <hr class="text-light" />
           </div>
-          <div class="col-12 col-lg-7 px-3 pb-3" style="margin-bottom: 10rem">
+          <div class="col-12 col-lg-7 px-3 pb-3" style="padding-bottom: 10rem">
             <!-- Card centrale -->
             <div
               class="d-none d-lg-flex justify-content-start align-items-center mt-3"
@@ -107,7 +100,7 @@
               <div class="bg-secondary text-white rounded-circle px-1">
                 <i class="bi bi-chevron-right"></i>
               </div>
-              <div class="ms-3 d-none" id="searchBarDiv">
+              <div class="ms-3" id="searchBarDiv">
                 <form id="formSearch">
                   <input
                     type="text"
@@ -129,7 +122,7 @@
                 </div>
                 <div class="col-md-8 bg-dark">
                   <div class="card-body h-100 position-relative">
-                    <p>Album</p>
+                    <p>Brano</p>
                     <h3 class="card-title" id="title1">Highway to Hell</h3>
                     <a
                       href=""
@@ -143,12 +136,16 @@
                       <span id="artist2">AC/DC</span>
                     </p>
                     <div class="position-absolute bottom-0 start-5">
-                      <button
-                        type="button"
-                        class="btn btn-success rounded-5 text-dark"
-                      >
-                        Play
-                      </button>
+                      <div class="d-inline" id="containerButton">
+                        <audio id="audioM" src=""></audio>
+                        <button
+                          type="button"
+                          class="btn btn-success rounded-5 text-dark 0"
+                          id="playerButton"
+                        >
+                          Play
+                        </button>
+                      </div>
                       <button
                         type="button"
                         class="btn btn-outline-light rounded-5 mx-2"
@@ -170,10 +167,13 @@
 
             <h4 class="text-light">Buonasera</h4>
 
-            <div class="row row-cols-2 row-cols-md-3 mt-4 mw-100 g-2" id="row1">
+            <div
+              class="row row-cols-2 row-cols-md-3 mt-4 mw-100 g-2 bg-dark boder border-danger"
+              id="row1"
+            >
               <!-- Card 1 -->
 
-              <div class="col-6 nascosto">
+              <div class="col-6 nascosto bg-dark">
                 <div class="card bg-dark text-white carte">
                   <div class="card-body d-flex p-0">
                     <img
@@ -191,7 +191,7 @@
               </div>
 
               <!-- Card 2 -->
-              <div class="col-6 nascosto">
+              <div class="col-6 nascosto bg-dark">
                 <div class="card bg-dark text-white carte">
                   <div class="card-body d-flex p-0">
                     <img
@@ -210,7 +210,7 @@
               </div>
 
               <!-- Card 3 -->
-              <div class="col nascosto">
+              <div class="col nascosto bg-dark">
                 <div class="card bg-dark text-white carte">
                   <div class="card-body d-flex p-0">
                     <img
@@ -231,7 +231,7 @@
               <!-- Second Row -->
 
               <!-- Card 4 -->
-              <div class="col nascosto">
+              <div class="col nascosto bg-dark">
                 <div class="card bg-dark text-white carte">
                   <div class="card-body d-flex p-0">
                     <img
@@ -250,7 +250,7 @@
               </div>
 
               <!-- Card 5 -->
-              <div class="col nascosto">
+              <div class="col nascosto bg-dark">
                 <div class="card bg-dark text-white carte">
                   <div class="card-body d-flex p-0">
                     <img
@@ -269,7 +269,7 @@
               </div>
 
               <!-- Card 6 -->
-              <div class="col nascosto">
+              <div class="col nascosto bg-dark">
                 <div class="card bg-dark text-white carte">
                   <div class="card-body d-flex p-0">
                     <img
@@ -298,7 +298,7 @@
               >
                 <div class="text-light carte2">
                   <img
-                    src="./assets/imgs/main/image-17.jpg"
+                    src="./assets/imgs/main/image-3.jpg"
                     class="card-img-top mb-2"
                     alt="..."
                   />
@@ -306,13 +306,15 @@
                 <div class="carte2 text-white px-0 mw-100">
                   <p class="d-block d-md-none ps-2 ps-md-1">Playlist</p>
                   <h6 class="d-none d-md-block ps-2 ps-md-1">
-                    Hot Hits Italia
+                    Massima concentrazione
                   </h6>
                   <h6 class="fs-2 d-block d-md-none ps-2 ps-md-1">
-                    Hot Hits Italia
+                    Massima concentrazione
                   </h6>
 
-                  <p class="ps-2 ps-md-1">La playlist più calda del momento</p>
+                  <p class="ps-2 ps-md-1">
+                    La playlist più concentrata del momento
+                  </p>
                 </div>
               </div>
 
@@ -321,21 +323,21 @@
               >
                 <div class="text-light carte2">
                   <img
-                    src="./assets/imgs/main/image-17.jpg"
+                    src="./assets/imgs/main/image-4.jpg"
                     class="card-img-top mb-2"
                     alt="..."
                   />
                 </div>
                 <div class="carte2 text-white px-0 mw-100">
                   <p class="d-block d-md-none ps-2 ps-md-1">Playlist</p>
-                  <h6 class="d-none d-md-block ps-2 ps-md-1">
-                    Hot Hits Italia
-                  </h6>
+                  <h6 class="d-none d-md-block ps-2 ps-md-1">Paceful piano</h6>
                   <h6 class="fs-2 d-block d-md-none ps-2 ps-md-1">
-                    Hot Hits Italia
+                    Paceful piano
                   </h6>
 
-                  <p class="ps-2 ps-md-1">La playlist più calda del momento</p>
+                  <p class="ps-2 ps-md-1">
+                    Una playlist piena di pace con un sottofondo di pianoforte
+                  </p>
                 </div>
               </div>
 
@@ -344,7 +346,7 @@
               >
                 <div class="text-light carte2">
                   <img
-                    src="./assets/imgs/main/image-17.jpg"
+                    src="./assets/imgs/main/image-9.jpg"
                     class="card-img-top mb-2"
                     alt="..."
                   />
@@ -352,13 +354,15 @@
                 <div class="carte2 text-white px-0">
                   <p class="d-block d-md-none ps-2 ps-md-1">Playlist</p>
                   <h6 class="d-none d-md-block ps-2 ps-md-1">
-                    Hot Hits Italia
+                    Canta sotto la doccia
                   </h6>
                   <h6 class="fs-2 d-block d-md-none ps-2 ps-md-1">
-                    Hot Hits Italia
+                    Canta sotto la doccia
                   </h6>
 
-                  <p class="ps-2 ps-md-1">La playlist più calda del momento</p>
+                  <p class="ps-2 ps-md-1">
+                    Non ti annoiare mentre fai la doccia.Canta!
+                  </p>
                 </div>
               </div>
 
@@ -367,21 +371,21 @@
               >
                 <div class="card custom-card text-light carte2">
                   <img
-                    src="./assets/imgs/main/image-17.jpg"
+                    src="./assets/imgs/main/image-6.jpg"
                     class="card-img-top mb-2"
                     alt="..."
                   />
                 </div>
                 <div class="card-body carte2 text-white px-0">
                   <p class="d-block d-md-none ps-2 ps-md-1">Playlist</p>
-                  <h6 class="d-none d-md-block ps-2 ps-md-1">
-                    Hot Hits Italia
-                  </h6>
+                  <h6 class="d-none d-md-block ps-2 ps-md-1">Jazz vibes</h6>
                   <h6 class="fs-2 d-block d-md-none ps-2 ps-md-1">
-                    Hot Hits Italia
+                    Jazz vibes
                   </h6>
 
-                  <p class="ps-2 ps-md-1">La playlist più calda del momento</p>
+                  <p class="ps-2 ps-md-1">
+                    Una playlist che sa di passato JAZZ
+                  </p>
                 </div>
               </div>
 
@@ -390,7 +394,7 @@
               >
                 <div class="card custom-card text-light carte2">
                   <img
-                    src="./assets/imgs/main/image-17.jpg"
+                    src="./assets/imgs/main/image-7.jpg"
                     class="card-img-top mb-2"
                     alt="..."
                   />
@@ -398,13 +402,13 @@
                 <div class="card-body carte2 text-white px-0">
                   <p class="d-block d-md-none ps-2 ps-md-1">Playlist</p>
                   <h6 class="d-none d-md-block ps-2 ps-md-1">
-                    Hot Hits Italia
+                    Caffè del buongiorno
                   </h6>
                   <h6 class="fs-2 d-block d-md-none ps-2 ps-md-1">
-                    Hot Hits Italia
+                    Caffè del buongiorno
                   </h6>
 
-                  <p class="ps-2 ps-md-1">La playlist più calda del momento</p>
+                  <p class="ps-2 ps-md-1">Buongiorno Campione!</p>
                 </div>
               </div>
             </div>
@@ -498,57 +502,93 @@
         </div>
       </div>
     </main>
-    <footer class="d-none d-lg-block">
-      <div class="music-player">
-        <div class="song-bar">
-          <div class="song-infos">
-            <div class="image-container">
-              <img
-                src="https://d2y6mqrpjbqoe6.cloudfront.net/image/upload/f_auto,q_auto/media/library-400/216_636967437355378335Your_Lie_Small_hq.jpg"
-                alt=""
-              />
-            </div>
-            <div class="song-description">
-              <p class="title">
-                Watashitachi wa Sou Yatte Ikite Iku Jinshu na no
-              </p>
-              <p class="artist">Masaru Yokoyama</p>
-            </div>
-          </div>
-          <div class="icons">
-            <i class="far fa-heart"></i>
-            <i class="fas fa-compress"></i>
-          </div>
-        </div>
-        <div class="progress-controller">
-          <div class="control-buttons">
-            <i class="fas fa-random text-success"></i>
-            <i class="fas fa-step-backward"></i>
-            <i class="play-pause fas fa-play"></i>
-            <i class="fas fa-step-forward"></i>
-            <i class="fas fa-undo-alt text-success"></i>
-          </div>
-          <div class="progress-container">
-            <span>0:49</span>
-            <div class="progress-bar">
-              <div class="progress"></div>
-            </div>
-            <span>3:15</span>
-          </div>
-        </div>
-        <div class="other-features">
-          <i class="bi bi-mic"></i>
-          <i class="bi bi-speaker"></i>
-          <i class="bi bi-music-note-list"></i>
-          <div class="volume-bar">
-            <i class="fas fa-volume-down"></i>
-            <div class="progress-bar">
-              <div class="progress"></div>
-            </div>
-          </div>
+
+    <div
+      id="player"
+      class="d-none d-flex row align-items-center px-0 bg-dark justify-content-between fixed-bottom"
+    >
+      <div id="now-song" class="col-3 d-flex align-items-center">
+        <img
+          id="player-img"
+          src="./assets/imgs/main/image-1.jpg"
+          alt=""
+          class="mt-3 me-3"
+          height="100"
+          width="100"
+        />
+        <div>
+          <p id="title-song" class="mb-1 text-light"></p>
+          <span class="mt-1 text-light" id="artist-player"></span>
         </div>
       </div>
-    </footer>
+      <div class="col-4 d-flex flex-column mb-3 justify-content-center">
+        <div class="text-center mb-3">
+          <i class="bi bi-shuffle text-light fs-3 me-2"></i>
+          <i class="bi bi-skip-start-fill text-light fs-3 me-2"></i>
+          <i
+            class="bi bi-play-circle-fill text-light fs-3 me-2"
+            id="pause-player"
+          ></i>
+          <i class="bi bi-skip-end-fill text-light fs-3 me-2"></i>
+        </div>
+
+        <div
+          class="progress bg-secondary"
+          role="progressbar"
+          aria-label="Example 1px high"
+          aria-valuenow="30"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          style="height: 3px"
+        >
+          <div id="bar" class="progress-bar bg-light" style="width: 0%"></div>
+        </div>
+      </div>
+      <div class="col-3 d-flex justify-content-center align-items-end">
+        <div class="me-2">
+          <i class="bi bi-mic text-light"></i>
+          <i class="bi bi-list text-light"></i>
+          <i class="bi bi-speaker text-light"></i>
+          <i class="bi bi-volume-up-fill text-light" id="volumeOut"></i>
+        </div>
+        <div style="position: relative; width: fit-content; height: 30px">
+          <input
+            id="volume-slider"
+            class="custom-input"
+            type="range"
+            min="0"
+            max="100"
+            step="any"
+            value="100"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="row fixed-bottom d-lg-none justify-content-around bg-black bg-gradient bg-opacity-50"
+      id="buttonBar"
+    >
+      <div class="col-3">
+        <a class="nav-link text-light fw-bold text-center" href="#">
+          <i class="bi bi-house-fill text-light me-2 ms-2 d-block big"></i>
+          Home
+        </a>
+      </div>
+      <div class="col-3">
+        <a class="nav-link text-light text-center" href="./cerca.html">
+          <i class="bi bi-search text-light me-2 ms-2 d-block big"></i> Cerca
+        </a>
+      </div>
+      <div class="col-3">
+        <a class="nav-link text-light text-center" href="#">
+          <i
+            class="bi bi-music-note-list text-light text-light ms-2 me-2 d-block big"
+          ></i>
+          La tua libreria
+        </a>
+      </div>
+    </div>
 
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
