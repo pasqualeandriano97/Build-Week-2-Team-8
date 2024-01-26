@@ -32,7 +32,10 @@
                 </a>
                 <ul class="nav flex-column">
                   <li class="nav-item text-light">
-                    <a class="nav-link text-light fw-bold" href="#">
+                    <a
+                      class="nav-link text-light fw-bold"
+                      href="./homePage.html"
+                    >
                       <i class="bi bi-house-fill text-light me-2 ms-2"></i> Home
                     </a>
                   </li>
@@ -92,22 +95,47 @@
           <div class="col-12 col-lg-7 px-3 pb-3" style="padding-bottom: 10rem">
             <!-- Card centrale -->
             <div
-              class="d-none d-lg-flex justify-content-start align-items-center mt-3"
+              class="d-none d-lg-flex justify-content-between align-items-center mt-3"
             >
-              <div class="bg-secondary text-white rounded-circle px-1 mx-3">
-                <i class="bi bi-chevron-left"></i>
-              </div>
-              <div class="bg-secondary text-white rounded-circle px-1">
-                <i class="bi bi-chevron-right"></i>
-              </div>
-              <div class="ms-3" id="searchBarDiv">
-                <form id="formSearch">
-                  <input
-                    type="text"
-                    class="form-control w-auto bg-dark text-white"
-                    id="formInput"
-                  />
-                </form>
+              <div class="d-flex justify-content-between w-100">
+                <div class="d-flex justify-content-between">
+                  <div>
+                    <button
+                      class="btn btn-dark border border-light-50 rounded-circle bg-dark opacity-50 mx-3"
+                    >
+                      <i class="bi bi-chevron-left text-light"></i>
+                    </button>
+                    <button
+                      class="btn btn-dark border border-light-50 rounded-circle bg-dark opacity-50"
+                    >
+                      <i class="bi bi-chevron-right text-light"></i>
+                    </button>
+                  </div>
+                  <div class="ms-3" id="searchBarDiv">
+                    <form id="formSearch">
+                      <input
+                        type="text"
+                        class="form-control w-auto bg-dark text-white"
+                        id="formInput"
+                      />
+                    </form>
+                  </div>
+                </div>
+                <div class="me-3">
+                  <button
+                    class="dropdown-toggle btn-outline-secondary btn rounded-pill bg-dark opacity-75 p-1"
+                  >
+                    <div class="p-0 d-inline">
+                      <img
+                        src="./assets/imgs/main/image-10.jpg"
+                        alt=""
+                        width="20"
+                        class="rounded-circle"
+                      />
+                    </div>
+                    <span>Profilo privato</span>
+                  </button>
+                </div>
               </div>
             </div>
             <div class="card mb-3 mt-3 bg-dark text-white d-inline">
@@ -122,7 +150,7 @@
                 </div>
                 <div class="col-md-8 bg-dark">
                   <div class="card-body h-100 position-relative">
-                    <p>Brano</p>
+                    <p>Album</p>
                     <h3 class="card-title" id="title1">Highway to Hell</h3>
                     <a
                       href=""
@@ -291,7 +319,7 @@
               Altro di ciò che ti piace
             </h5>
             <div
-              class="row row-cols-1 row-cols-md-4 row-cols-lg-6 justify-content-start justify-content-lg-between px-3"
+              class="row row-cols-1 row-cols-md-3 row-cols-lg-4 row-cols-xl-6 justify-content-start justify-content-lg-between px-3"
             >
               <div
                 class="col d-flex flex-row flex-md-column carte2 p-2 rounded mb-3 mx-md-3 mx-lg-0"
@@ -334,9 +362,14 @@
                   <h6 class="fs-2 d-block d-md-none ps-2 ps-md-1">
                     Paceful piano
                   </h6>
-
-                  <p class="ps-2 ps-md-1">
+                  <p class="d-none d-md-block d-lg-block ps-2 ps-md-1">
                     Una playlist piena di pace con un sottofondo di pianoforte
+                  </p>
+                  <p class="d-md-none d-lg-none ps-2 ps-md-1">
+                    Una playlist piena di pace con
+                  </p>
+                  <p class="d-md-none d-lg-none ps-2 ps-md-1">
+                    un sottofondo di pianoforte
                   </p>
                 </div>
               </div>
