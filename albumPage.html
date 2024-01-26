@@ -33,12 +33,12 @@
               </a>
               <ul class="nav flex-column">
                 <li class="nav-item text-light">
-                  <a class="nav-link text-light fw-bold" href="#">
+                  <a class="nav-link text-light fw-bold" href="./homePage.html">
                     <i class="bi bi-house-fill text-light me-2 ms-2"></i> Home
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link text-light" href="#">
+                  <a class="nav-link text-light" href="./cerca.html">
                     <i class="bi bi-search text-light me-2 ms-2"></i> Cerca
                   </a>
                 </li>
@@ -81,7 +81,7 @@
           </nav>
           <hr class="text-light" />
         </div>
-        <div class="col-7">
+        <div id="color" class="col-7">
           <!-- Pulsanti con le frecce -->
           <div class="d-flex justify-content-start align-items-center mt-3">
             <div class="bg-dark text-white rounded-circle px-1 mx-3">
@@ -90,11 +90,29 @@
             <div class="bg-dark text-white rounded-circle px-1">
               <i class="bi bi-chevron-right"></i>
             </div>
+            <button
+              class="ms-auto me-2 dropdown-toggle btn-outline-secondary btn rounded-pill bg-dark opacity-75 p-1 d-none d-md-block"
+            >
+              <div class="p-0 d-inline">
+                <img
+                  src="./assets/imgs/main/image-10.jpg"
+                  alt=""
+                  width="20"
+                  class="rounded-circle"
+                />
+              </div>
+              <span>Profilo privato</span>
+            </button>
           </div>
+          <!---->
+          <!-- Inizio della nuova sezione con l'icona del profilo -->
+
+          <!-- Fine della nuova sezione -->
           <!---->
           <main class="container">
             <div id="album-content" class="mt-5">
               <div class="row">
+                <!---->
                 <!-- album-details -->
                 <div class="col-md-4">
                   <img
@@ -122,7 +140,10 @@
                       class="col d-flex justify-content-start align-items-center mb-2"
                     >
                       <span class="rounded text-center me-3">
-                        <i class="bi bi-play-circle-fill text-success fs-1"></i>
+                        <i
+                          class="bi bi-play-circle-fill text-success fs-1"
+                          id="album-play-button"
+                        ></i>
                       </span>
                       <div class="icon-group">
                         <span class="rounded text-center icon-spacing">
@@ -243,84 +264,83 @@
     </div>
     <!---->
     <div
-    id="player"
-    class="d-none row h-100 align-items-center px-0 bg-dark justify-content-between sticky-bottom"
-  >
-    <div id="now-song" class="col-3 d-flex align-items-center">
-      <img
-        id="player-img"
-        src="./assets/imgs/main/image-1.jpg"
-        alt=""
-        class="mt-3 me-3"
-        height="100"
-        width="100"
-      />
-      <div>
-        <p id="title-song" class="mb-1 text-light"></p>
-        <span class="mt-1 text-light">Queen</span>
-      </div>
-    </div>
-    <div class="col-4 d-flex flex-column mb-3 justify-content-center">
-      <div class="text-center mb-3">
-        <i class="bi bi-shuffle text-light fs-3 me-2"></i>
-        <i class="bi bi-skip-start-fill text-light fs-3 me-2"></i>
-        <i
-          class="bi bi-play-circle-fill text-light fs-3 me-2"
-          id="pause-player"
-        ></i>
-        <i class="bi bi-skip-end-fill text-light fs-3 me-2"></i>
-      </div>
-
-      <div
-        class="progress bg-secondary"
-        role="progressbar"
-        aria-label="Example 1px high"
-        aria-valuenow="30"
-        aria-valuemin="0"
-        aria-valuemax="100"
-        style="height: 3px"
-      >
-        <div
-          id="bar"
-          class="progress-bar bg-light"
-          style="width: 60%"
-        ></div>
-      </div>
-    </div>
-    <div class="col-3 d-flex justify-content-center align-items-end">
-      <div class="me-2">
-        <i class="bi bi-mic text-light"></i>
-        <i class="bi bi-list text-light"></i>
-        <i class="bi bi-speaker text-light"></i>
-        <i class="bi bi-volume-up-fill text-light"></i>
-      </div>
-      <div style="position: relative; width: fit-content; height: 30px">
-        <input
-          id="volume-slider"
-          class="custom-input"
-          type="range"
-          min="0"
-          max="100"
-          step="any"
-          value="100"
+      id="player"
+      class="d-none row h-100 align-items-center px-0 bg-dark justify-content-between fixed-bottom"
+    >
+      <div id="now-song" class="col-3 d-flex align-items-center">
+        <img
+          id="player-img"
+          src="./assets/imgs/main/image-1.jpg"
+          alt=""
+          class="mt-3 me-3"
+          height="100"
+          width="100"
         />
+        <div>
+          <p id="title-song" class="mb-1 text-light"></p>
+          <span id="artist-name" class="mt-1 text-light"></span>
+        </div>
+      </div>
+      <div class="col-4 d-flex flex-column mb-3 justify-content-center">
+        <div class="text-center mb-3">
+          <i class="bi bi-shuffle text-light fs-3 me-2"></i>
+          <i class="bi bi-skip-start-fill text-light fs-3 me-2"></i>
+          <i
+            class="bi bi-play-circle-fill text-light fs-3 me-2 nope"
+            id="pause-player"
+          ></i>
+          <i class="bi bi-skip-end-fill text-light fs-3 me-2"></i>
+        </div>
+
+        <div
+          class="progress bg-secondary"
+          role="progressbar"
+          aria-label="Example 1px high"
+          aria-valuenow="30"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          style="height: 3px"
+        >
+          <div id="bar" class="progress-bar bg-light" style="width: 60%"></div>
+        </div>
+      </div>
+      <div class="col-3 d-flex justify-content-center align-items-end">
+        <div class="me-2">
+          <i class="bi bi-mic text-light"></i>
+          <i class="bi bi-list text-light"></i>
+          <i class="bi bi-speaker text-light"></i>
+          <i class="bi bi-volume-up-fill text-light"></i>
+        </div>
+        <div style="position: relative; width: fit-content; height: 30px">
+          <input
+            id="volume-slider"
+            class="custom-input"
+            type="range"
+            min="0"
+            max="100"
+            step="any"
+            value="100"
+          />
+        </div>
       </div>
     </div>
-  </div>
-</div>
+
     <!---->
-    <div class="container">
+    <div id="bottomNav" class="container">
       <div
         class="row fixed-bottom d-lg-none justify-content-around bg-black bg-gradient bg-opacity-50"
       >
         <div class="col-3">
-          <a class="nav-link text-light fw-bold text-center" href="#">
+          <a
+            class="nav-link text-light fw-bold text-center"
+            href="./homePage.html"
+          >
             <i class="bi bi-house-fill text-light me-2 ms-2 d-block big"></i>
             Home
           </a>
         </div>
         <div class="col-3">
-          <a class="nav-link text-light text-center" href="#">
+          <a class="nav-link text-light text-center" href="./cerca.html">
             <i class="bi bi-search text-light me-2 ms-2 d-block big"></i> Cerca
           </a>
         </div>
@@ -339,6 +359,12 @@
       integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
       crossorigin="anonymous"
     ></script>
+    <!-- <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/canvasjs/1.7.0/canvasjs.min.js"
+      integrity="sha512-FJ2OYvUIXUqCcPf1stu+oTBlhn54W0UisZB/TNrZaVMHHhYvLBV9jMbvJYtvDe5x/WVaoXZ6KB+Uqe5hT2vlyA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script> -->
     <script src="./album.js"></script>
   </body>
 </html>
