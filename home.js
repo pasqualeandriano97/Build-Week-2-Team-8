@@ -10,7 +10,8 @@ const row1 = document.getElementById("row1");
 const dNone1 = document.getElementById("d-none");
 const toArtistPage = document.getElementById("toArtistPage");
 const playerButton = document.getElementById("playerButton");
-const footer = document.getElementById("player");
+const playerButton2 = document.getElementById("playerButton2");
+const footer = document.getElementById("footer");
 let album = "";
 const audioM = document.getElementById("audioM");
 
@@ -21,13 +22,12 @@ form.addEventListener("submit", (e) => {
 const dNone = () => {
   searchBar.classList.toggle("d-none");
 };
-const dnoneF = () => {
-  footer.classList.remove("d-none");
-};
 search.addEventListener("click", (e) => {
   e.preventDefault();
   dNone();
 });
+
+console.log(audio);
 
 const card = document.querySelectorAll(".nascosto");
 
@@ -50,14 +50,7 @@ const artistSpan = (text) => {
 };
 
 const ciao = [];
-const compileFooter = (data) => {
-  const img = document.getElementById("player-img");
-  const title = document.getElementById("title-song");
-  const artist = document.getElementById("artist-player");
-  img.src = data[0].album.cover;
-  title.innerText = data[0].album.title;
-  artist.innerText = data[0].artist.name;
-};
+
 const createCard = (data) => {
   for (let i = 1; i < data.length; i++) {
     ciao.push(data[i].album.title);
@@ -105,118 +98,66 @@ const countCols = () => {
 
 let params = "";
 let zero = 0;
+let buttons = document.getElementsByClassName(zero)[0];
 
-let volume = document.getElementById("volume-slider");
+console.log("buttons", buttons);
 
-let currentSearch = 0; // Aggiunto per gestire la ricerca corrente
-
-const searchData = (event, searchId) => {
+const searchData = (event) => {
   let value;
   if (event) {
     value = event.target.value;
   } else {
-    value = "drake";
+    value = "tenore di Bitti";
   }
 
-  const currentSearchId = ++currentSearch;
-
-  fetch("https://striveschool-api.herokuapp.com/api/deezer/search?q=" + value)
-    .then((res) => res.json())
+  fetch(" https://striveschool-api.herokuapp.com/api/deezer/search?q=" + value)
+    .then((res) => {
+      return res.json();
+    })
     .then((response) => {
-      // Check if this is the most recent search
-      if (currentSearchId === searchId) {
-        title(response.data[0].album.title);
-        artist(response.data[0].artist.name);
-        artistSpan(response.data[0].artist.name);
-        toArtistPage.href =
-          "./artistPage.html" + "?artistId=" + response.data[0].artist.id;
-        let src = response.data[0].album.cover_big;
-        image1.src = src;
-        album = response.data[0].album.id;
+      title(response.data[0].album.title);
+      artist(response.data[0].artist.name);
+      artistSpan(response.data[0].artist.name);
+      toArtistPage.href =
+        "./artistPage.html" + "?artistId=" + response.data[0].artist.id;
+      let src = response.data[0].album.cover_big;
+      image1.src = src;
+      album = response.data[0].album.id;
 
-        deleteCard();
-        dNone();
-        console.log(response.data[0].preview);
-        compileFooter(response.data);
-        audioM.src = response.data[0].preview;
-        playerButton.addEventListener("click", (e) => {
-          playAudio(e);
-          dnoneF();
-        });
+      deleteCard();
+      dNone();
+      console.log(response.data[0].preview);
 
-        createCard(response.data);
+      audioM.src = response.data[0].preview;
+      playerButton.addEventListener("click", () => {
+        footer.classList.remove("d-lg-none");
+        audioM.play();
+      });
 
-        countCols();
-      }
+      createCard(response.data);
+
+      countCols();
+
+      console.log(audio);
     })
     .catch((error) => {
-      alert(error + "si Ã¨ verificato un errore");
+      alert(error + "si è verificato un errore");
     });
 };
 
 const debounce = (callback, waitTime) => {
   let timer;
-  let searchId = 0;
 
   return (...args) => {
-    const currentId = ++searchId;
-
     clearTimeout(timer);
     timer = setTimeout(() => {
-      callback(...args, currentId);
+      callback(...args);
     }, waitTime);
   };
 };
-
 searchData();
 const debounceHandler = debounce(searchData, 1000);
 formInput.addEventListener("input", debounceHandler);
-
-let countsecond = 0;
-let player;
-let urlPlayer;
-let counter;
-function playAudio(e) {
-  audioM.play();
-
-  counter = setInterval(contatore, 1000);
-  contatore();
-  document.getElementById("player").classList.toggle("d-none");
-  let volume = document.getElementById("volume-slider");
-  volume.addEventListener("input", function (e) {
-    audioM.volume = e.currentTarget.value / 100;
-  });
-}
-function stopcounter() {
-  clearInterval(counter);
-
-  countsecond = 0;
-
-  document.getElementById("bar").style.width = countsecond + "%";
-}
-
-function stop() {
-  document.getElementById("player").classList.toggle("d-none");
-  audioM.pause();
-  audioM.currentTime = 0;
-  stopcounter();
-}
-
-document.querySelector("#pause-player").addEventListener("click", function (e) {
-  console.log(e.target);
-  stop();
-  stopcounter();
-});
-
-function contatore() {
-  document.getElementById("bar").style.width = countsecond + "%";
-  countsecond = countsecond + 3;
-  console.log(countsecond);
-  if (countsecond > 95) {
-    countsecond = 0;
-    stopcounter();
-  }
-}
 
 const navigazioneInalbumPage = function (id) {
   let parametro = id;
