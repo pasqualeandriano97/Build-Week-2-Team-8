@@ -14,6 +14,16 @@ const footer = document.getElementById("player");
 let album = "";
 const audioM = document.getElementById("audioM");
 
+const getArtistFromUrl = function () {
+  const currentUrl = window.location.href;
+  const url = new URL(currentUrl);
+  const searchParams = url.searchParams; // paramatres di query dall'URL
+  const query = searchParams.get("search");
+  return query;
+};
+
+let ricerca = getArtistFromUrl();
+
 let temp = "x";
 form.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -112,8 +122,10 @@ const searchData = (event) => {
   let value;
   if (event) {
     value = event.target.value;
+  } else if (ricerca) {
+    value = ricerca;
   } else {
-    value = "drake";
+    value = "salmo";
   }
 
   fetch(" https://striveschool-api.herokuapp.com/api/deezer/search?q=" + value)
@@ -135,10 +147,6 @@ const searchData = (event) => {
       console.log(response.data[0].preview);
       compileFooter(response.data);
       audioM.src = response.data[0].preview;
-      playerButton.addEventListener("click", (e) => {
-        playAudio(e);
-        dnoneF();
-      });
 
       createCard(response.data);
 
@@ -148,6 +156,11 @@ const searchData = (event) => {
       alert(error + "si è verificato un errore");
     });
 };
+
+playerButton.addEventListener("click", (e) => {
+  playAudio();
+  dnoneF();
+});
 
 const debounce = (callback, waitTime) => {
   let timer;
@@ -162,16 +175,21 @@ const debounce = (callback, waitTime) => {
 searchData();
 const debounceHandler = debounce(searchData, 1000);
 formInput.addEventListener("input", debounceHandler);
+
 let countsecond = 0;
 let player;
 let urlPlayer;
 let counter;
-function playAudio(e) {
+function playAudio() {
   audioM.play();
-
+  document.getElementById("buttonBar").classList.toggle("d-none");
   counter = setInterval(contatore, 1000);
-  contatore();
+  console.log("counter partito");
   document.getElementById("player").classList.toggle("d-none");
+  document.getElementById("volumeOut").addEventListener("click", function () {
+    audioM.volume = 0;
+    volume.value = 0;
+  });
   let volume = document.getElementById("volume-slider");
   volume.addEventListener("input", function (e) {
     audioM.volume = e.currentTarget.value / 100;
@@ -179,20 +197,22 @@ function playAudio(e) {
 }
 function stopcounter() {
   clearInterval(counter);
-
+  document.getElementById("player").classList.toggle("d-none");
+  document.getElementById("buttonBar").classList.toggle("d-none");
+  console.log("ciao");
   countsecond = 0;
 
   document.getElementById("bar").style.width = countsecond + "%";
 }
 
 function stop() {
-  document.getElementById("player").classList.toggle("d-none");
   audioM.pause();
   audioM.currentTime = 0;
   stopcounter();
 }
 
 document.querySelector("#pause-player").addEventListener("click", function (e) {
+  console.log("stop");
   console.log(e.target);
   stop();
 });
